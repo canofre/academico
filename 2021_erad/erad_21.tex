@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+\usepackage{sbc-template}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{footnote}
+\usepackage{adjustbox}
+
+
+\usepackage{setspace}
+\usepackage{graphicx,url}
+\usepackage{multirow}
+\usepackage{color,colortbl,xcolor}
+\RequirePackage{hyperref}
+
+%\sloppy
+
+\title{Uso de Paralelismo em uma Aplicação de Meio Poroso}
+
+
+\author{Ronaldo Canofre M. dos Santos, Mauricio Martinuzzi Fiorenza, \\Daniel Chaves Temp, Pablo Brauner Viegas, Claudio Schepke}
+
+\address{Programa de Pós-Graduação em Engenharia de Software (PPGES)
+\\Universidade Federal do Pampa (UNIPAMPA)\\ Alegrete – RS – Brasil\\
+\email{\{canofresantos,mauriciofiorenza, claudioschepke\}@unipampa.edu.br}
+\email{danieltemp,pabloviegas\}.aluno@unipampa.edu.br}}
+\linespread{0.90}
+
+\begin{document} 
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{resumo}
+O aumento de desempenho dos processadores atuais, deve-se ao número cada vez maior de cores. %, unidades de processamento vetorial e GPUs. 
+%Programar utilizando os recursos de processamento paralelo dessas arquiteturas, como forma de conseguir uma melhor performance, é uma tarefa complexa, mas possível. 
+Este trabalho apresenta melhorias aplicadas ao código de um projeto denominado Poros, utilizando o paralelismo através da biblioteca OpenMP. Dessa forma, com a análise da execução sequencial em comparação com as execuções paralelas, foi possível verificar uma melhoria de cerca de 23\% no tempo de execução em uma arquitetura multicore.
+\end{resumo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introdução} \label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+O particionamento de um problema visando a sua execução de forma mais otimizada, não se restringe somente a problemas computacionais, sendo facilmente aplicável a problemas práticos das mais diversas áreas. Nesta linha, é possível buscar a utilização de paralelismo aplicado a problemas já conhecidos, como por exemplo, a adaptação de soluções aplicadas a dinâmica de fluidos, para uma separação de fluxo de grãos \cite{oliveira2020}.
+
+Atualmente, o trabalho em desenvolvimento, denominado projeto \textit{Poros}, realiza esta resolução de forma sequencial, utilizando como base as equações de Navier-Stokes \cite{constantin1988navier}. No entanto, o desempenho obtido fica aquém das necessidades de tempo e poder de processamento existentes, sendo desejada a otimização da execução na busca por ganhos de eficiência na resolução do problema. Dessa forma, este trabalho apresenta melhorias aplicadas ao código, com a utilização de paralelismo através da biblioteca  OpenMP \cite{chandra2001parallel}.
+
+No decorrer do trabalho, discutimos as alterações/paralelizações realizadas na Seção~\ref{sec:implementacao}, os resultados obtidos na Seção~\ref{sec:resultados} e %, e %por fim, 
+as considerações finais do trabalho na Seção~\ref{sec:conclusoes}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Implementação} \label{sec:implementacao}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+A implementação realizada iniciou-se com a adaptação do código fonte para utilização do OpenMP, incluindo também como opções de compilação, as \textit{flags} ``-O3'' para otimização e ``-mp'' para interpretar as diretivas e \textit{pragmas} de programação paralela de memória compartilhada, tendo sido utilizado o compilador ``pgf90'' do pacote Nvidia HPC SDK\footnote{\url{https://www.pgroup.com/index.htm}}.
+
+A otimização do código foi realizada sobre o arquivo que reúne as sub-rotinas chamadas durante a execução, sendo concentrada a aplicação de paralelização nos principais laços existentes, observando-se o controle de compartilhamento das variáveis, bem como a dependência temporal das mesmas. Já as execuções foram realizadas como sendo sempre uma nova instância, buscando manter constante o número de iterações.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Resultados} \label{sec:resultados}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Para validação e coleta de resultados, realizou-se a execução do código sequencial (com uma \textit{thread}) em comparação com execuções paralelas com 2, 3, 4, 5 e 6 \textit{threads}, obtendo como resultado a média simples de três execuções para cada instância analisada. Tais execuções foram realizadas em um \textit{host} físico executando Ubuntu Desktop 20.04, equipado com processador Intel(R) Xeon(R) CPU E5-2609 com 1.90GHz, 16 GB de memória e HD 140 GB, em um ambiente de ensino não controlado. Para coleta do tempo total de execução foi utilizado o comando \textit{time}\footnote{\url{https://man7.org/linux/man-pages/man1/time.1.html}}. A Tabela \ref{tab_execuções} mostra os valores temporais coletados em cada execução, bem como a médias obtidas para cada operação.
+
+
+\begin{table} [htb]
+    \renewcommand{\arraystretch}{1.4}
+    \centering
+    \caption{Comparativo de execuções sequencial e paralelas}
+    \label{tab_execuções}
+    
+    \begin{adjustbox}{width=\textwidth}
+        \begin{tabular}{| l | c | c | c | c | c | c |}
+            \hline
+
+                        &\textbf{1 Thread}   &\textbf{2 Threads}  &\textbf{3 Threads}  &\textbf{4 Threads}   &\textbf{5 Threads}  &\textbf{6 Threads} \\
+            \hline
+            Execução 1  &   78,510s     &60,486s    &59,445s    &55,640s    &52,710s      &50,090s \\
+            Execução 2  &   78,382s     &60,713s    &58,621s    &55,315s    &52,808s      &50,140s \\
+            Execução 3  &   78,248s     &60,953s    &58,247s    &55,694s    &52,498s      &50,296s \\
+            \hline
+            Média      &\textbf{78,380s}   &\textbf{60,717s}   &\textbf{58,771s}   &\textbf{55,550s}  &\textbf{52,672s}  &\textbf{50,175s}\\
+            
+            \hline
+        \end{tabular}
+    \end{adjustbox}
+\end{table}
+
+Os resultados demonstram um ganho de 23\% no tempo de execução, comparando a execução sequencial com a paralela com apenas 2 \textit{threads}. A melhora no desempenho se confirma conforme são aumentadas os números de processadores, chegando ao máximo de 36\% de melhoria do desempenho com 6 \textit{threads} paralelas.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusão} \label{sec:conclusoes}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Analisando as execuções realizadas após a aplicação das otimizações com paralelismo via OpenMP, fica visível uma considerável melhoria no tempo de execução, demonstrando que o objetivo foi alcançado, apresentando como resultando uma aplicação com efetiva otimização.
+
+Como trabalhos futuros, pretende-se buscar alternativas de codificação que permitam alcançar resultados melhores dos que os já obtidos, através de técnicas de execução em GPU como OpenACC ou CUDA \cite{hoshino2013cuda}.
+
+%\singlespacing
+%\begin{spacing}{.1}
+\bibliographystyle{sbc}
+\bibliography{bib_conf}
+%\end{spacing}
+\end{document}
