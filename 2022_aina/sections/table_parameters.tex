@@ -1,0 +1,38 @@
+%\renewcommand{\arraystretch}{1}
+\small
+\begin{tabular}{l l l}\hline
+Symbol                               & Formal specification                                                                              & Definition \\\hline
+Sets and set objects                 &                                                                                                   & \\
+$p$                                  & $p = (N^{P}, L^{P}, S^{P}$)                                                                       & Physical network infrastructure, composed of nodes and links\\
+$i \in N^{P}$                        & $N^{P} = \{ i\,\vert\,i\,\mbox{ is a N-PoP }\}$                                                   & Network points of presence (N-PoPs) in the physical infrastructure \\
+$(i,j) \in L^{P}$                    & $L^{P} = \{ (i,j)\,\vert\, i,j \in N^{P}\}$                                                       & Unidirectional links connecting pairs of N-PoPs $i$ and $j$ \\
+$\langle i, r \rangle \in S^{P}$     & $S^{P} = \{ \langle i, r \rangle\,\vert\, i \in N^{P} \land r \in \mathbb{N}^{*} \}$              & Identifier $r$ of the actual location of N-PoP $i$ \\
+$m \in F$                            & $F = \{ m\,\vert\,m\,\mbox{ is a function type}\,\}          $                                    & Types of virtual network functions available\\
+$j \in U_{m}$                        & $U_{m} = \{ j\,\vert\,j\,\mbox{ is an instance of }\, m \in F\,\}$                                & Instances of virtual network function $m$ available\\
+$q \in Q$                            &                                                                                                   & Service function chaining (SFC) requests that must be deployed\\
+$q$                                  & $q = (N^{S}_q, L^{S}_q, S^{S}_q)$                                                                 & A single SFC request, composed of VNFs and their chainings\\
+$i \in N^{S}_q$                      & $N^{S} = \{ i\,\vert\,i\,\mbox{ is a VNF instance or endpoint }\}$                                & SFC nodes (either a network function instance or an endpoint)\\
+$(i,j) \in L^{S}_q$                  & $L^{S}_q = \{ (i,j)\,\vert\, i,j \in N^{S}\}$                                                     & Unidirectional links connecting SFC nodes\\
+$\langle i, r \rangle \in S_q^{S}$   & $S^{S}_q = \{ \langle i, r \rangle\,\vert\, i \in N^{S} \land r \in \mathbb{N}^{*} \}$            & Required physical location $r$ of SFC endpoint $i$\\
+$H^{H}_{q,i} \in H^{S}_q$            &                                                                                                   & Distinct forwarding paths (subgraphs) contained in a given SFC $q$\\
+$H^{H}_{q,i}$                        & $H^{H}_{q,i} = (N^{H}_{q,i}, L^{H}_{q,i})$                                                        & A possible subgraph (with two endpoints only) of SFC $q$\\
+$N^{H}_{q,i}$                        & $N^{H}_{q,i} \subseteq N^{S}_q$                                                                   & VNFs that compose the SFC subgraph $H^{H}_{q,i}$ \\
+$L^{H}_{q,i}$                        & $L^{H}_{q,i} \subseteq L^{S}_q$                                                                   & Links that compose the SFC subgraph $H^{H}_{q,i}$\\
+Parameters                           &                                                                                                   & \\
+$c^{P}_i \in \mathbb{R}_{+}$         &                                                                                                   & Computing power capacity of N-PoP $i$\\
+$b^{P}_{i,j} \in \mathbb{R}_{+}$     &                                                                                                   & One-way link bandwidth between N-PoPs $i$ and $j$\\
+$d^{P}_{i,j} \in \mathbb{R}_{+}$     &                                                                                                   & One-way link delay between N-PoPs $i$ and $j$\\
+$c^{S}_{q,i} \in \mathbb{R}_{+}$     &                                                                                                   & Computing power required for network function $i$ of SFC $q$\\
+$b^{S}_{q,i,j} \in \mathbb{R}_{+}$   &                                                                                                   & One-way link bandwidth required between nodes $i$ and $j$ of SFC $q$\\
+$d^{S}_{q} \in \mathbb{R}_{+}$       &                                                                                                   & Maximum tolerable end-to-end delay of SFC $q$\\
+Functions                            &                                                                                                   & \\
+$f_{type}(m)$                        & $f_{type} : N^{P} \cup N^{S} \rightarrow F$                                                       & Type of some given virtual network function (VNF)\\
+$f_{cpu}({m,j})$                     & $f_{cpu} : ( F \times U_m ) \rightarrow \mathbb{R}_{+}$                                           & Computing power associated to instance $j$ of VNF type $m$\\
+$f_{delay}({m})$                     & $f_{delay} : F \rightarrow \mathbb{R}_{+}$                                                        & Processing delay associated to VNF type $m$\\
+Variables                            &                                                                                                   & \\
+$y_{i,m,j} \in Y$                    & $Y = \{\,y_{i,m,j}\,,\,\forall\,i \in N^P, m \in F, j \in U_m\,\}$                                & VNF placement\\
+$a^{N}_{i,q,j} \in A^{N}$            & $A^{N} = \{\,a^{N}_{i,q,j}\,,\,\forall\,i \in N^{P}, q \in Q, j \in N_{q}^{S}\,\}$                & Assignment of required network functions/endpoints\\
+$a^L_{i,j,q,k,l} \in A^{L}$          & $A^{L} = \{\,a^L_{i,j,q,k,l}\,,\,\forall\,(i,j) \in L^{P}, q \in Q, (k,l) \in L_{q}^{S}\,\}$      & Chaining allocation\\
+\hline
+\end{tabular}
+%\begin{tabular}{m{2.2cm} m{4.8cm} m{5.5cm}}\hline

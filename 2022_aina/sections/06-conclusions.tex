@@ -1,0 +1,23 @@
+%\vspace{-5mm}
+
+
+\section{Final Remarks}
+
+In this paper, we propose a lightweight in-network mechanism to selective report in-band network telemetry to INT collectors. Our approach is based on a window-based moving average and it is tailored to SmartNIC architectures. By evaluating our approach in a state-of-the-art SmartNIC, we showed that our approach can report up to 16X less reporting statistics to INT collectors, while introducing a negligible overhead in terms of latency (1.5X higher than the baseline pipeline). As future work, we intend to explore machine learning algorithms in the data plane to decide whether to report data or not. Also, we intend to explore other offloading alternatives so that the processing workload can be split up on different SmartNICs or in eBPF/DPDK approaches.
+
+%coordenar a coleta de dados com as metricas no INT sink
+
+
+%\textcolor{red}{TBD. In this paper, we performed an extensive performance evaluation of SmartNICs to understand and quantify existing limitations. We focus our evaluation on measuring the performance in terms of latency and throughput for a plethora of packet memory-intensive scenarios. We showed that the line-rate throughput is bounded by (i) the number of register operations (up to 10 operations), (ii) the number of multiple match+action tables user in the pipeline (up to 5), (iii) the number of cryptography operations (up to 10). As future work, we intend to build an analytical model that can accurately estimate the performance of P4 applications executing on SmartNICs.}
+
+%\section*{Acknowledgements}
+
+%This work was partially funded by the National Council for Scientific and Technological Development (CNPq 2018/427814), Foundation for Research of the State of Sao Paulo (FAPESP 2018/23092-1), and Foundation for Research of the State of Rio Grande do Sul (19/2551-0001224-1,19/2551-0001266-7). 
+
+%This work was partially funded by National Council for Scientific and Technological Development (CNPq) (grant 427814/2018-9), São Paulo Research Foundation (FAPESP) (grant 2018/23092-1), Rio Grande do Sul Research Foundation (FAPERGS) (grants 19/2551-0001266-7,20/2551-000483-0, 19/2551-0001224-1)
+
+
+
+
+
+%by means of a MILP model. The main idea consists of dynamically guiding the acquisition process of telemetry data using learning mechanisms. We showed that our proposed model can effectively collect the most important telemetry items and provide accurate network-wide visibility to monitoring applications. Our model outperforms state-of-the-art heuristics by a factor of 2.5x with respect to the number of spatial dependencies satisfied and by a factor of 8x when comparing the number of anomalies identified.

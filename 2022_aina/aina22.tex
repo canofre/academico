@@ -1,0 +1,81 @@
+%\documentclass[final, 2p]{elsarticle}
+%\documentclass[review]{elsarticle}
+\documentclass[graybox]{svmult}
+%\documentclass[graybox]{svmult}
+
+\usepackage{graphicx}
+\usepackage[tight,footnotesize]{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{flushend}
+
+\usepackage{pdflscape}
+\usepackage{afterpage}
+\usepackage{capt-of}% or use the larger `caption` package
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor,colortbl}
+\let\proof\relax
+\let\endproof\relax
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+
+
+\usepackage{url}
+\usepackage{array}
+\usepackage{paralist}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{color}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\magenta}[1]{\textcolor{magenta}{#1}}
+
+
+\usepackage{setspace}
+\setstretch{0.97}
+
+\begin{document}
+
+\title*{Towards Efficient Selective In-Band Network Telemetry Report using SmartNICs}
+
+
+\author{Ronaldo Canofre, Ariel G. Castro, Arthur F. Lorenzon, Fábio D. Rossi, Marcelo C. Luizelli}
+
+\authorrunning{Canofre et al.}
+\institute{Ronaldo Canofre, Ariel G. Castro,  Arthur F. Lorenzon, Marcelo C. Luizelli \\Federal University of Pampa (UNIPAMPA) \at Alegrete, Brazil, \email{
+{canofre, ariel.aluno , arthurlorenzon, marceloluizelli}@unipampa.edu.br}
+\and Fabio D. Rossi\\ Federal Institute Farroupilha (IFFAR) \at Alegrete, Brazil, \email{fabio.rossi@iffarroupilha.edu.br}
+}
+
+
+\maketitle
+
+\begin{abstract}\\
+In-band Network Telemetry (INT) is a promising network monitoring approach that allows broad and fine-grained network visibility. However, when a massive volume of telemetry data is reported to an INT collector, there might overload the whole network infrastructure, while still degrading the performance of packet processing at the INT sink node. As previously reported in the literature,  programmable devices -- in particular, SmartNICs -- have strict constraints in terms of processing and memory. In this work, we propose to design and implement a lightweight Exponentially Weighted Moving Average based mechanism inside the SmartNIC data plane in order to assist the decision-making process of reporting INT data. By evaluating our solution in state-of-the-art SmartNICs, we show that our proposal can decrease the number of nonessential telemetry data sent to INT collectors by up to 16X compared to the de-facto INT approach while presenting minor overhead in terms of packet latency.
+
+\end{abstract}
+
+
+\input{sections/01-introduction.tex}
+\input{sections/02-background}
+\input{sections/04-approach}
+\input{sections/05-eval.tex}
+\input{sections/03-related}
+\input{sections/06-conclusions}
+
+\vspace{-6mm}
+
+\bibliographystyle{splncs04}
+\scriptsize
+\vspace{-2mm}
+
+
+\bibliography{sample}
+
+\end{document}

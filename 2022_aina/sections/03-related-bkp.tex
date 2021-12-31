@@ -1,0 +1,96 @@
+\section{Related Work}
+
+% Tentei fazer contando uma história, não tanto pela cronologia
+%The SDN paradigm allows programmability access to different layers of action, ranging from external controllers to the network to manipulating network packets directly by the network interface card. These layers can be independent of each other, but they can also work together, enabling for a complete view of the network. As part of this stack, the use of programmability in the data plane via INT paradigm has become a more present theme in academia and industry. This section presents the works that deal with network monitoring in the data plane related to this proposal.
+
+The data plane programmability has opened up a wide range of research opportunities to solve existing network monitoring problems. Examples include the implementations of statistics collectors to correct the priority of packets~\cite{tr19_p4_int_vnf}, the usage of selective telemetry to reduce the network overload~\cite{tr18_selective_in-band}, and the classification and analysis of network flows~\cite{tr19_flowstalker}. As previously mentioned, INT allows the network flow packets to embed network telemetry data. For example, LINT~\cite{tr21_lint} implements a mechanism that seeks to adapt the accuracy of telemetry with network overload, where each node in the network analyzes the impact and decides when to send the information to the collector without burdening the production network flows. This decision is based on a prediction function and some predefined and static metrics. In a complementary way, the handling of packets in the data plane and the orchestration of flows becomes an option that allows optimizing the performance of applications over the physical network substrate.
+
+
+For example, P4Entropy \cite{tr20_estimating_log} calculates the entropy of traffic by using the information contained in the packets. The entropy results are forwarded to the controller for storage and future analysis. In \cite{tr21_network_telemetry_by} data collections are performed that allow the SDN controller to evaluate the behavior of network traffic in order to improve data routing. 
+
+
+%As one can see, the existing literature has mostly focused on tackling classical network monitoring problems. do not cause overhead on production flows. 
+
+
+
+%In the same way, INT-MD collects information through a probe package, generated specifically for this purpose and later forwarded to a collector (responsible for processing and displaying the data). These probe-type packets are identified through a tag in the \textit{diffServ} field of the IPv4 header, thus receiving the insertion of additional INT headers at the beginning of the topology and updated along the way until being delivered to the destination.
+
+Likewise, \cite{tr20_multi-feature} uses this model for detecting DDoS attacks in the data plane, combining metrics of malicious traffic, and checking the number of flows and the symmetry of packets in order to identify anomalies. Alarms are triggered over periods and transmitted to external mitigation systems.
+
+Due to the maturity of hardware technologies such as SmartNICs and the emergence of domain-specific programming languages such as P4, more complex applications are starting to be implemented on the data plane, particularly AI applications. The implementation of selective and dynamic monitoring with the use of additional headers\cite{tr19_sampling-based}, the classification of packets into classes with the implementation of machine learning algorithms \cite{tr19_do_switches_dream} and the detection of flow events \cite{tr20_flow_event}, are also some examples of manipulating packet headers programmatically. NIDS \cite{tr20_anomaly_detection} consists of a machine learning-based anomaly detection algorithm for detecting anomalous packets and future error mitigation. Likewise, \cite{tr20_detection_of_fog} presents the operation of detection and analysis of telemetry data that are of interest to the applications, capturing information in pre-defined packets. SwitchTree \cite{tr20_switchtree} performs the implementation of the Random Forest algorithm in the data plane, aimed at packet analysis and decision-making. The values used as comparison parameters are defined from a training stage, but it also allows updating the rules at runtime depending on the behavior of the new flows. \cite{tr21_programmable_sw} and \cite{tr19_do_switches_dream, tr20_switchtree} present implementation of machine learning models in the data plane using decision tree, and aim to generate network mapping for intrusion detection services.
+
+% Ficou vago esse parágrafo porque ainda não entendi bem o objetivo do artigo
+One can verify through the analyzed works that several proposals use the data plane to carry out some level of implementation based on the INT paradigm. However, most do not perform any processing in the data plane, serving only as information forwarders for external analysis; others are more similar to this proposed idea, using the data plane to perform some processing. Unlike the recent literature, this work aims at offloading the decisions process of reporting INT data to the SmartNIC data plane. For that, we propose a lightweight in-network mechanism based on a window-based moving average that utilizes as input the INT data already collected by INT-based packets.
+
+%with a more detailed analysis of the available metadata considering the history of the data already analyzed.
+
+
+
+
+%In this section, we discuss the most recent efforts towards P4 SmartNIC offloading and the performance evaluation of them in PDP. 
+
+%2017
+%DAIET~\cite{sapio2017network} is a network system that performs in-network data aggregation. It uses Machine Learning (ML) to judiciously decide which partition of the application (e.g., MapReduce) is deployed into PDP to reduce network traffic while maintaining the correctness of the overall computation. FairNIC~\cite{grant2020smartnic} utilizes SmartNICs to decrease CPU host utilization while providing performance isolation in a multi-tenant environment. It provides an abstraction that allows network applications to access NIC resources. 
+%In turn, Clara~\cite{qiu2020clara} provides performance clarity for SmartNIC offloading. It analyzes network functions (NFs) and predicts their performance when ported to SmartNIC targets. It uses a logical SmartNIC model to capture SmartNIC architecture. Then, an intermediate representation identifies the code blocks and maps them onto the logical model while optimizing for a performance objective. Finally, it outputs the performance profile for the original NF input on a particular workload. Similarly, SmartChain~\cite{wang2020smartchain} minimizes the redundant packet transmission by analyzing service function chaining (SFC) forwarding paths and reducing the packet transmissions between the SmartNIC and the host CPU. In the same direction,  
+%iPipe~\cite{liu2019offloadingiPipe} allows to offload distributed applications onto SmartNICs. At its core, a scheduler combines first-come \& first-serve strategy with deficient round-robin to tolerate applications with variable execution costs. 
+
+
+
+
+%2018
+%In addition to the efforts mentioned above towards enabling efficient offloading of network applications to SmartNICs, there are also recent initiatives to offload ML algorithms to PDPs. In this context, N2Net~\cite{siracusano2018network} and Sanvito~et~al.\cite{sanvito2018can} represent the first steps toward in-network inference.
+%
+%N2Net~\cite{siracusano2018network} is a compiler that generates a P4 program configuration for an RMT-like switch pipeline~\cite{bosshart2013forwarding} based on a binary neural network (BNN) model description while Sanvito~et~al.\cite{sanvito2018can} introduce BaNaNa SPLIT, a system capable of offloading BNNs from CPUs to SmartNICs through a quantization process that transforms the NN model into a format that can be appropriately executed on PDPs.
+%
+%More recently, Xiong et al.~\cite{xiong2019switches} propose to deploy trained ML classification algorithms into PDPs. The proposed approach relies on multiple match-action tables and, therefore, is portable between different PDP targets.
+
+%As one can observe, most of the existing efforts are still restricted to offloading mechanisms to PDP. 
+%
+%However, to the best of our knowledge, these studies do not take into account the current limitations of existing SmartNICs on the offloading process. Therefore, these solutions might either lead to infeasible solutions (e.g., using more resources than available) or suffer high penalties on the expected performance. One noticeable exception is the recent study conducted by Harkous~et~al.~\cite{harkous2019towards}. They evaluate different P4 programs and their impact on the packet processing latency. They gradually increase the complexity of a SmartNIC pipeline (i.e., including parser, control blocks, and deparser) to identify the most influential variables for predicting packet latency. 
+%
+%Despite this effort, the work conducted by~\cite{harkous2019towards} is still full of gaps considering key building blocks of complex P4 programs (e.g., registers, cryptography functions, packet recirculation, or multiple tables) -- which are essential in P4 applications (especially ML applications). In this work, we take a step further into thoroughly understanding the performance of SmartNICs and their existing limitations.
+
+%Despite the recent efforts to evaluate the migration of different services such as X~\cite{} and Y~\cite{} from CPU host to programmable devices (e.g., SmartNICs, NetFPGA, ASICs). X~\cite{} and Y~\cite{} have evaluated the effective cost of this transaction. However, no work above considers the effective cost of accessing and writing into internal registers and match-action tables simultaneously. In this work we take a step further into thoroughly understanding the performance of SmartNICs and existing limitations.
+
+
+%It  with some offloading designs: (\textit{i}) a logical-to-physical queue mapping to manage the CPU-NIC data transfer, a (\textit{ii}) per-packet state to specify which packet fields must be sent between CPU and NIC, and a (\textit{iii}) a caching construct for data synchronization.
+%
+%Similarly, iPipe~\cite{liu2019offloadingiPipe} is an actor-based framework that offloads distributed applications onto SmartNICs. In its core, a scheduler combines FCFS (first come, first serve) and DRR (deficient round-robin) to tolerate applications with variable execution costs (e.g., CPU/memory usage). Also, a real-time engine maximizes NIC compute utilization according to different metrics (i.e., traffic control, computing capability, on-board memory, and host communication) to deliver line-rate traffic. 
+%
+%Finally, ClickNP~\cite{li2016clicknp} is a high-level FPGA-accelerated platform for NF processing on commodity servers. With ClickNP, there is no need to deal with FPGA hardware description languages (HDLs), such as VHDL, allowing to perform CPU/FPGA packet processing with low latency jointly.
+
+%Arthur: Conforme comentário no começo da seção, sugiro: (i) inserir o drawback de cada trabalho ou grupo de trabalhos comparado ao teu; ou (ii) inserir um parágrafo com "our contributions" destacando o que tu avança no estado da arte comparando com os trabalhos que foram apresentados.
+
+
+
+
+
+
+% to for evaluation and deployment of SmartNICs in PDP. 
+%arthur: de uma maneira geral, senti falta do drawback de cada (ou de um grupo) trabalho. Isto é, o que tu te diferencia deles? Onde tu avança no estado da arte perante os demais resultados? 
+%Arthur: eu vejo que isso pode ser feito de duas maneiras: ou ao final de cada trabalho (ou grupo de trabalhos com o mesmo objetvio) tu inserir uma sentença com o que ele (s) não faz(em) que tu faz; OU inserir ao final da seção um parágrafo com "our contributions" onde tu insere as tuas contribuições e onde tu avança no estado da arte comparado aos trabalhos que ali estão.
+%Arthur: outro ponto... em um momento tu fala de uso of SmartNICs para diminuir o uso do host. Outro ponto é in-network inference. A divisão está Ok, mas por exemplo, o paper DAIET não está em nenhuma sub-classe. 
+
+
+
+
+
+
+
+
+%To the best of our knowledge, the in-band network telemetry plan problem has not been investigated before the inception of programmable data planes. 
+%
+%Recent advances in forwarding devices (e.g.,\cite{MDT-Cisco}) have enabled to continuously push telemetry information to data collectors -- known as Model-Driven Telemetry (MDT). In this context, Putina et al.~\cite{SigcommBigdama2018Stream-learning} proposed a mechanism for real-time detection of BGP anomalies, relying on machine-learning techniques and MDT-based telemetry data streaming. In turn, Mazieres et al.~\cite{sigcomm14-minions-tpp} introduced the seminal work on in-band network telemetry, introducing the concept of tiny packet programs. Everflow~\cite{sigcomm15-everflow} extended the proposed INT concept by exploring the ``match-and-mirror'' functionality of commodity switches. Everflow utilizes the INT concept to filter out packets that satisfy a given pattern and send them to multiple data analyzers.% which then can send ``guided probes'' to investigate potential faults.
+
+%More recently, Gupta et al.~\cite{sigcomm18-sonata} designed SONATA, a high-level interface to express telemetry queries. Based on data plane constraints, monitoring queries are partitioned and processed in multiple devices -- ensuring that queries and the packet forwarding operate at line rate. Other studies have proposed to execute specific telemetry operations (e.g., heavy hitters) directly by the data plane.
+%
+%Tammana et al. proposed PathDump~\cite{osdi16-pathdump}, a  mechanism designed to identify and debug anomalous behaviors in programmable network infrastructure. PathDump keeps track of the packet's route for subsequent analysis of it, employing INT instruction in the forwarding devices. SwitchPointer~\cite{nsdi18switchpointer} further advances that approach, proposing to collect end-host telemetry information to enhance debugging capabilities. 
+
+%
+%Last, Liu~et~al.~\cite{8526824} and Pan~et~al.~\cite{infocom19pathplanning} have focused on performing network telemetry through active INT probe packets. Both strategies have relied on \textit{Euler Circuits} to indicate the path to be taken by active probe packets.
+%
+%In turn, Marques et al.~\cite{JISA2019-int} and Hohemberger et al.~\cite{8865384} have focused on the embedding of telemetry data into production network packets. Marques et al.~\cite{JISA2019-int} designed heuristic approaches to orchestrate how live packets collect network telemetry data, while Hohemberger et al.~\cite{8865384} designed a machine learning-based model that wisely collects telemetry data based on its importance. 
+
+
+%As can be observed, most of the research efforts related to the in-band telemetry are still restricted to mechanisms that mostly utilize collected telemetry data for new monitoring solutions \cite{sigcomm14-minions-tpp,sigcomm15-everflow,osdi16-pathdump,nsdi18switchpointer}. The studies introduced by~\cite{infocom19pathplanning,8865384,8526824,JISA2019-int} represent the first steps towards the orchestrating of in-band network telemetry. However, these studies have mainly focused on maximizing the amount of telemetry data collected from the network infrastructure without considering monitoring applications' requirements. This leads to sub-optimal solutions (as later shown in our experiments) and limits the operationalization of the proposed strategies in a production environment. As a first step towards a scalable orchestration solution, this work advances the state-of-the-art by proposing a heuristic-based approach to timely solves the in-band network telemetry problem.
+

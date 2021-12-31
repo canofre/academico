@@ -1,0 +1,22 @@
+\section{Related Work}
+The data plane programmability has opened up a wide range of research opportunities to solve existing network monitoring problems such as packet priorization~\cite{tr19_p4_int_vnf}, the usage of selective telemetry to reduce the network overload~\cite{tr18_selective_in-band}, and the classification and analysis of network flows~\cite{tr19_flowstalker}. As previously mentioned, INT allows the network flow packets to embed network telemetry data - such as in \cite{tang2019sel,ben2020pint,tr21_lint}.
+%
+Sel-INT~\cite{tang2019sel} leverages select group tables to selectively insert INT headers into software switches based on its bucket's weight and a certain probability.
+%
+Similarly, PINT~\cite{ben2020pint} leverages global hash functions and randomly decides to embed INT data in a given packet,
+%
+while LINT~\cite{tr21_lint} implements a mechanism with adaptive telemetry accuracy, where each node in the network analyzes its impact and decides whether to send the information to the collector.
+
+P4Entropy~\cite{tr20_estimating_log} calculates the entropy of traffic by using the information contained in the packets. The entropy results are forwarded to the controller for storage and future analysis. Lin~et~al.~\cite{tr21_network_telemetry_by} perform data collection to allow the SDN controller to evaluate the behavior of network traffic to improve data routing.
+%
+Likewise, \cite{tr20_multi-feature} proposes a DDoS schema entirely in the data plane. It leverages typical DDoS metrics such as incoming flows and packet symmetry ratio and periodically triggers alarms to external controllers.
+
+With the emergency of hardware technologies such as SmartNICs and domain-specific programming languages such as P4, more applications are being implemented directly in the data plane. The implementation of selective and dynamic monitoring with the use of additional headers~\cite{tr19_sampling-based}, the classification of packets into classes with the implementation of machine learning algorithms~\cite{tr19_do_switches_dream} and the detection of flow events~\cite{tr20_flow_event} are some examples of programmatic packet header manipulation.
+%
+NIDS~\cite{tr20_anomaly_detection} consists of a machine learning-based anomaly detection algorithm for detecting anomalous packets and future error mitigation. Likewise, \cite{tr20_detection_of_fog} analyzes and embeds telemetry data of interest to the applications. SwitchTree \cite{tr20_switchtree} performs the implementation of the Random Forest algorithm in the data plane for packet analysis and decision-making while updating the rules at runtime. \cite{tr21_programmable_sw} and \cite{tr19_do_switches_dream, tr20_switchtree} present an implementation of machine learning models in the data plane using decision tree, and aim to generate network mapping for intrusion detection services.
+
+Current research efforts in the INT domain (e.g., \cite{ben2020pint, tr21_lint, tang2019sel}) have mostly neglected the costs of reporting telemetry data to INT collectors. In fact, existing work have considered either a full report of information or a selective one based on static thresholds.
+%
+In this work, we aim to fill this gap and offload the decision process of reporting INT data into the SmartNIC data plane in a dynamically manner. We propose a lightweight in-network mechanism based on a window-based moving average with collected INT data as input.
+
+%Current research efforts in the INT domain have mostly focused on using in-band telemetry as a way to solve network management and operations problems. implementing  mechanisms  to  to solve  only consider static telemetry reports to INT collectors.
