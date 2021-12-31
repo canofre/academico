@@ -1,0 +1,14 @@
+﻿Título: Automatização de Delegação de Tarefas via E-mail no Grupo PET Ciência da Computação
+
+OBJETIVOS (100 a 300 caracteres )
+Este trabalho visa solucionar o problema de delegação de tarefas cotdianas aos integrantes do grupo PET Ciência da Computação (PET CC), de forma que todos realizem uma determinada tarefa, seguindo uma ordem pré definida.
+
+Materiais e Métodos ( 100 e 700 caracteres )
+Para solução desse problema foi desenvolvido um script utilizando a linguagem de programação PHP e um arquivo Shell Script que armazena linhas de comando e as executa quando chamado. O script desenvolvido em PHP, ao ser executado, verifica a data atual (mês e dia), gerando o índice que determina para qual integrande deve ser destina a próxima realização da tarefa. Após, envia um e-mail a todos os integrantes do grupo informando quem é o responsável. O arquivo Shell Script é responsável por executar o script em PHP e para que os avisos respeitacem a periodicidade necessária, o arquivo shell script foi adicionado ao servidor do grupo PET CC, sendo executado regularmente. 
+
+Resultados ( 100 a 700 caracteres )
+A automatização da delegação de tarefas através de um script de  envio de e-mail, eliminou a necessidade de  um trabalho manual e repetitivo. O mesmo serviu também para evitar possíveis falhas, como não realização das tarefas devido a mesma não ter sido delegada ou ter sido esquecida. Pois como aprimoramento do script, foi acrescentado o envio de uma mensagem relembrando a tarefa delegada, bem como a data ou perído da realizaçào da mesma. 
+
+Conclusão ( 100 a 300 caracteres )
+O desenvolvimento de um script fácil de automatização, possibilitou uma melhoria no desenvolvimento das tarefas do grupo devido sua automatização. Como trabalhos futuros, pretende-se estender o aviso automatizados para demais tarefas que são executadas pelo grupo com uma determinada periódicidade.
+

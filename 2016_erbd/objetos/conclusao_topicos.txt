@@ -1,0 +1,8 @@
+Não foram encontradas aplicações em php completas para mineração de dados
+Não forma encontradas aplicações em php com interface gráfica e uso intuítivo
+Encontradas algumas aplicações em php com restrições de uso e somente para exemplo
+Encontradas inúmeras aplicações individuais de algoritmos de mineração de dados mas se comparadas as aplicações desenvolvidas em java nem são tantas e são incompletas.
+Implementação de aplicações individuais mais intuitivas e prontas para uso
+Implementação de uma ferramenta completa composta por vários algoritmos
+Comparação entre as aplicações encontradas e as comumentemente usadas
+Comparação entre as ferramentas a serem desenvolvidas e as existes e também entra as encontradas

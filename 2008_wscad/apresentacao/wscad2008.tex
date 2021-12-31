@@ -1,0 +1,327 @@
+\documentclass{beamer}
+
+%\usetheme{Malmoe}			% PADRAO azaul
+\usetheme{Lsc}				% LSC
+%\usetheme{Luebeck}			% esse aqui é do geito que eu gostei -> menu em cima
+%\usetheme{Marburg}			% menu do lado direito
+%\usetheme{PaloAlto}		% menu do lado esquerdo
+%\usetheme{Rochester}		% simples sem menu
+%\usetheme{Warsaw}			% menu em cima
+%\usetheme{Singapore}		% PODRE
+%\usetheme{Pittsburgh}		% SIMPLES E TUDO BRANCO
+%\usetheme{Ilmenau}			% PODRE
+%\usetheme{Hannover}		% 
+%\usecolortheme{whale}		% ->legal : Preto e Azul
+%\usecolortheme{albatross}	% NAO
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{epsfig, shadow}
+\usepackage{tabularx,multirow}
+\usepackage{pgf,xcolor,pslatex}
+\usepackage[latin1]{inputenc}
+\setbeamertemplate{footline}[frame number]	% Numero nas páginas
+\setbeamercovered{transparent}
+
+
+\title[XEN]{Análise Comparativa de Desempenho do Hipervisor Xen: Paravirtualização versus Virtualização Total}
+\author[WSCAD 2008 (29/10 - 01/11)]{Andrea Schwertner Charão e Ronaldo Canofre M. dos Santos}
+\institute{
+  \vspace{-.3cm} \\
+LSC - Laboratório de Sistemas de Computação\\
+Curso de Ciência da Computação\\
+UFSM - Universidade Federal de Santa Maria
+}
+
+\date{
+\begin{center}
+\vspace{-1cm}
+\end{center}
+
+\begin{center}
+	\vspace{-.25cm}
+	\includegraphics[scale=.18]{logos/ufsmLogo.eps}
+	\hspace{+1.2cm}
+	\includegraphics[scale=.25]{logos/lsc.eps}
+\end{center}
+}
+
+
+%inicia o ducumento
+\begin{document}
+
+
+%Página com os logos e o titulo
+\frame[plain]{\titlepage}
+
+%Side 2 - Roteiro
+\begin{frame}
+   \frametitle{Roteiro}
+    %acrescenta todas as sessoes com itens do roteiro
+   \tableofcontents[hideallsubsections]
+\end{frame}
+
+\section{Introdução}
+\begin{frame}
+   \frametitle{Introdução}
+	\begin{itemize}
+		\item Contexto
+			\begin{itemize}
+				\item Virtualização :  decada de 50-60
+				\item Diversas formas de realização
+				\item Ampla utilização e avaliação
+				\item Hardware Virtual Machine : HVM
+			\end{itemize}
+		\item Objetivo
+			\begin{itemize}
+				\item Quantificar o impacto das tecnologias de virtualização implementadas pelo Xen
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Virtualização}
+
+\subsection{Revisão}
+
+\begin{frame}
+   \frametitle{Virtualização}
+	\begin{itemize}
+		\item IBM - Mainframes 
+		\item Compartilhamento de hardware
+		\item Monitor de Máquinas Virtuais / Hypervisor
+		\begin{itemize}
+			\item Camada extra de software
+			\item Controle dos dispositivos
+		\end{itemize}
+		\item Gerenciabilidade, flexibilidade, isolamento de falhas
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Técnicas de Virtualização}
+   \begin{columns}
+		\column{5.0cm}
+		\begin{itemize}
+			\item Virtualização Total
+			\begin{itemize}
+			    \item VMWare ESX 
+			\end{itemize}
+			\item Paravirtualização
+			\begin{itemize}
+			    \item Xen 
+			\end{itemize}
+			\item HVM 
+			\begin{itemize}
+			    \item Intel : IVT - Intel Virtualization Tecnology
+			    \item AMD: AMD-V - AMD Virtualization
+			\end{itemize}
+		\end{itemize}
+		\column{6.5cm}
+		\begin{center}
+		    \includegraphics[scale=.20]{figuras/pvm_vt.eps}
+		\end{center}
+		\end{columns}
+\end{frame}
+
+\subsection{MMV Xen}
+
+\begin{frame}
+   \frametitle{Xen}
+	\begin{itemize}
+		\item Implementação
+		\item Arquiteturas
+	\end{itemize}
+	\begin{center}
+	    \includegraphics[scale=.35]{figuras/aneis.eps}
+	\end{center}
+\end{frame}
+
+
+\begin{frame}
+   \frametitle{Virtualização dos Dispositivos}
+   \begin{columns}
+		\column{5.0cm}
+			\begin{itemize}
+				\item Acesso a disco e rede
+				\item Virtualização de memória 
+				\begin{itemize}
+				    \item Mapeamento estático
+			        \end{itemize}
+				\item Uso de CPU
+			\end{itemize}
+		\column{7.0cm}
+			\begin{center}
+				\includegraphics[scale=.20]{figuras/dispositivos.eps}
+			\end{center}
+		\end{columns}
+\end{frame}
+
+\section{Análise Comparativa}
+
+\subsection{Acerca do testes}
+\begin{frame}
+    \frametitle{Ambiente e Metodologia}
+	\begin{itemize}
+    \item Ambiente
+	\begin{itemize}
+		\item Servidores Intel Altix XE 210
+		\item Linux Kernel 2.6.20
+		\item Xen versão 3.2.0
+	\end{itemize}
+	\item Metodologia
+	\begin{itemize}
+		\item MV idênticas
+		\item Média aritmética de 10 execuções
+		\item Mais de um teste por dispositivo
+		\item Flag desabilitada para testes com HVM
+	\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\subsection{Benchmarks}
+
+\begin{frame}
+    \frametitle{Benchmarks e Dados para Testes (1/2)}
+        \begin{itemize}
+            \item Netperf - análise de rede
+            \begin{itemize}
+                \item Transferência de mensagens
+                \item Protocolos TCP e UDP
+                \item Grupos de 512 bytes, 512 Kbytes e 45 Mbytes
+                \item Resultado:  Taxa de Trasnferência (X)bytes/s
+            \end{itemize}
+            \item dd - análise de disco
+            \begin{itemize}
+                \item Transferência de arquivos
+                \item Tamanhos: 128Mbytes à 4Gbytes
+                \item Bloco padrão de 512 bytes
+                \item Resultado: Taxa de Transferência(Mbytes/s) e Tempo(s)
+            \end{itemize}
+        \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Benchmarks e Dados para Testes (2/2)}
+        \begin{itemize}
+            \item Stream - análise de memória
+            \begin{itemize}
+                \item Largura de banda
+                \item Resultado em Mbytes/s
+                \item Copy      a(i) = b(i)
+                \item Scale a(i) = q*b(i)
+                \item Add       a(i) = b(i)+c(i)
+                \item Triad a(i) = b(i)+q*c(i)
+            \end{itemize}
+            \item Linpack-PC - análise de CPU
+            \begin{itemize}
+                \item Conjunto de rotinas 
+                \item Matrizes 100 x 100
+                \item Precisão simples
+                \item Resultado: Número de operações em ponto flutuante (Mflops)
+            \end{itemize}
+        \end{itemize}
+\end{frame}
+
+
+\section{Resultados Obtidos}
+
+\subsection{Rede}
+
+%\begin{frame}
+%   \frametitle{TCP: Pacotes pequenos}
+%	\begin{center}
+%	    %\hspace{+1.2cm} 
+%	    \includegraphics[scale=.33]{../img/tcp_p.eps}
+%	    %\includegraphics[height=1cm]{logos/logo_pet.eps}		    
+%	\end{center}
+%\end{frame}
+%
+\begin{frame}
+   \frametitle{TCP: Pacotes médios}
+	\begin{center}
+	    \includegraphics[scale=.40]{figuras/tcp_media.eps}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle { UDP: Pacotes médios}
+	\begin{center}
+	    \includegraphics[scale=.40]{figuras/udp_media.eps}
+	\end{center}
+\end{frame}
+
+
+\subsection{Memória}
+
+\begin{frame}
+    \frametitle {Testes de memória}
+	\begin{center}
+	    \includegraphics[scale=.40]{figuras/memoria.eps}
+	\end{center}
+\end{frame}
+
+
+\subsection{Disco e CPU}
+
+\begin{frame}
+    \frametitle {Testes de disco (1/2)}
+	\begin{center}
+	    \includegraphics[scale=.40]{figuras/disco.eps}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle {Testes de disco (2/2)}
+	\begin{center}
+	    \includegraphics[scale=.40]{figuras/disco_tmp.eps}
+	\end{center}
+    \begin{itemize}
+		\item Testes de CPU
+	\end{itemize}
+\end{frame}
+
+
+
+\section{Considerações Finais}
+
+
+\subsection{ Conclusão }
+
+\begin{frame}
+    \frametitle { Analise dos Resultados }
+    \begin{table}
+	\centering
+	\caption{Comparação do impacto }
+          \resizebox{\columnwidth}{!}{
+	 \begin{tabular}{c|l}
+    	    \hline Dispositivo&      Resultado\\
+    	    \hline Rede&      	     Impacto significativo, desempenho PVM superior ao HVM.\\
+    	    \hline Disco&            Impacto significativo, desempenho PVM superior ao HVM.\\
+    	    \hline Memória&          Pequeno impacto, desempenho HVM levemente superior ao PVM. \\
+    	    \hline CPU&              Pequeno impacto, variação de 0,05 Mflops entre as abordagens.\\
+   \end{tabular}
+}
+   \end{table}
+\end{frame}
+
+\subsection{ Considerações }
+
+\begin{frame}
+    \frametitle { Considerações Finais }
+    \begin{itemize} 
+	\item Conclusões
+	\begin{itemize}
+		\item desempenho da virtualização assistida por hardware
+	\end{itemize}
+	\item Trabalhos Futuros
+	\begin{itemize}
+		\item KVM - Kernel-based Virtual Machine
+	\end{itemize}
+    \end{itemize}
+\end{frame}
+
+\end{document}

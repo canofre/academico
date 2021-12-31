@@ -1,0 +1,164 @@
+% Artigo escrito em junho de 2007
+% Por Caroline Vicentini e Ronaldo Canofre
+% Revisao da Professora Tutora Andrea Charao
+\documentclass[12pt]{article}
+
+\usepackage{ref/sbc-template}
+\usepackage{graphicx,url}
+\usepackage[brazil]{babel}   
+\usepackage[latin1]{inputenc}  
+\usepackage{xspace}
+     
+\sloppy
+
+\title{Desenvolvimento de uma Biblioteca Digital de Trabalhos de Gradua\c{c}\~{a}o}
+
+\author{Adler Hoff Schmidt\inst{1}, Caroline Figueira Vicentini\inst{1}, Fernando Bevilacqua\inst{1}, \\Ronaldo Canofre M. dos Santos \inst{1}, Andrea Schwertner Char\~{a}o\inst{1} }
+
+
+\address{Programa de Educa\c{c}\~{a}o Tutorial (PET) -- Curso de Ci\^{e}ncia da Computa\c{c}\~{a}o\\
+  Universidade Federal de Santa Maria (UFSM)
+  \email{\{adlerhs, carol, fernando, canofre, andrea\}@inf.ufsm.br}
+}
+
+\newcommand{\software}{\textit{software}\xspace}
+\newcommand{\site}{\textit{site}\xspace}
+
+\begin{document}
+
+\maketitle
+
+     
+\begin{resumo}
+O acesso aos resultados das pesquisas e trabalhos realizados nas universidades \'{e} importante para que o conhecimento seja disseminado e a ci\^{e}ncia, a tecnologia e a sociedade continuem evoluindo. Neste artigo, tem-se como foco a divulga\c{c}\~{a}o de trabalhos elaborados pelos acad\^{e}micos do Curso de Ci\^{e}ncia da Computa\c{c}\~{a}o da Universidade Federal de Santa Maria (UFSM). Com o objetivo de disseminar e compartilhar informa\c{c}\~{o}es sobre estes trabalhos, desenvolveu-se um sistema que permite gerenciar uma biblioteca digital de trabalhos de gradua\c{c}\~{a}o atrav\'{e}s da Web. Para implementa\c{c}\~{a}o desse sistema, utilizou-se as tecnologias MySQL e PHP5, que s\~{a}o amplamente difundidas atualmente. O resultado obtido foi um sistema de divulga\c{c}\~{a}o de trabalhos de gradua\c{c}\~{a}o que pode ser facilmente adaptado para problemas semelhantes e utilizado por outros cursos e outras universidades~\nocite{sbc}.
+\end{resumo}
+
+
+\section{Introdu\c{c}\~{a}o}
+Os resultados de trabalhos realizados em universidades precisam ser compartilhados com a sociedade e com o meio acad\^{e}mico do qual fazem parte. Isso permite disseminar o conhecimento adquirido ao desenvolver-se tais trabalhos, proporcionando assim o crescimento das \'{a}reas envolvidas. Tradicionalmente, esse compartilhamento \'{e} proporcionado pelas bibliotecas universit\'{a}rias, que mant\^{e}m em seus acervos as monografias, disserta\c{c}\~{o}es e teses produzidas nas institui\c{c}\~{o}es. Com o avan\c{c}o tecnol\'{o}gico, surgiu tamb\'{e}m a possibilidade de armazenar e disponibilizar informa\c{c}\~{o}es sobre esses trabalhos digitalmente, facilitando assim o acesso ao p\'{u}blico.
+
+Atualmente, existem esfor\c{c}os do governo em reunir e divulgar as disserta\c{c}\~{o}es e teses desenvolvidas nos cursos de p\'{o}s-gradua\c{c}\~{a}o do pa\'{i}s. Um exemplo desses esfor\c{c}os \'{e} a Biblioteca Digital de Teses e Disserta\c{c}\~{o}es (BDTD)~\cite{bdtd}, que \'{e} um projeto que busca integrar os sistemas de informa\c{c}\~{a}o das universidades brasileiras e incentivar a divulga\c{c}\~{a}o das teses e disserta\c{c}\~{o}es em meio digital. Seguindo esta tend\^{e}ncia, os cursos de gradua\c{c}\~{a}o v\^{e}m tamb\'{e}m se preocupando em melhorar a dissemina\c{c}\~{a}o de seus trabalhos tanto interna como externamente ao meio universit\'{a}rio~\cite{avaliacao}.
+
+Os alunos do Curso de Ci\^{e}ncia da Computa\c{c}\~{a}o da UFSM produzem Trabalhos de Gradua\c{c}\~{a}o (TG's) como requisito para integraliza\c{c}\~{a}o curricular. Os assuntos abordados nesses trabalhos s\~{a}o de interesse da comunidade acad\^{e}mica e geralmente apresentam resultados de pesquisas desenvolvidas na \'{a}rea de computa\c{c}\~{a}o, dentro da institui\c{c}\~{a}o. Embora esses trabalhos possam ser consultados nas bibliotecas da universidade, entende-se que o acesso aos mesmos poderia ser facilitado atrav\'{e}s de sistemas de informa\c{c}\~{a}o especialmente concebidos para este fim.
+
+Observando este cen\'{a}rio que \'{e} tamb\'{e}m recorrente em outros cursos e universidades, o grupo PET-CC (Programa de Educa\c{c}\~{a}o Tutorial do Curso de Ci\^{e}ncia da Computa\c{c}\~{a}o)~\cite{sesu} juntamente com a coordena\c{c}\~{a}o do curso, buscou uma solu\c{c}\~{a}o para melhorar a dissemina\c{c}\~{a}o dos TG's produzidos. Ap\'{o}s uma an\'{a}lise do problema e das solu\c{c}\~{o}es existentes, decidiu-se desenvolver um sistema para gerenciamento de uma biblioteca digital de TG's atrav\'{e}s da Web.
+
+Este artigo apresenta o processo de desenvolvimento do referido sistema. Para isso, descreve-se primeiramente a etapa de an\'{a}lise do problema e as medidas adotadas para o levantamento de requisitos do sistema. Em seguida, discute-se o projeto do sistema, detalhando-se a modelagem de seus elementos. Na seq\"{u}\^{e}ncia, apresenta-se a etapa de implementa\c{c}\~{a}o do sistema, descrevendo-se as ferramentas utilizadas e os testes realizados para verifica\c{c}\~{a}o do funcionamento do sistema. Para finalizar, apresenta-se uma avalia\c{c}\~{a}o dos resultados obtidos at\'{e} o momento, seguida da conclus\~{a}o do trabalho.
+
+
+\section{An\'{a}lise do Problema e Levantamento de Requisitos}
+O ponto de partida para o trabalho foi a defini\c{c}\~{a}o dos objetivos do sistema: divulgar os TG's de maneira eficiente ao p\'{u}blico interessado e prover meios para manter atualizadas as informa\c{c}\~{o}es no sistema.
+
+Para atingir o primeiro objetivo, decidiu-se divulgar os trabalhos ao p\'{u}blico atrav\'{e}s da Web, pois esta tecnologia se tornou amplamente popular e permite acesso \`{a} dist\^{a}ncia sem necessidade de instala\c{c}\~{a}o de \software por parte dos usu\'{a}rios. Al\'{e}m disso, esta op\c{c}\~{a}o permite a integra\c{c}\~{a}o do sistema com o \site Web do Curso de Ciência da Computa\c{c}\~{a}o, o que facilita a divulga\c{c}\~{a}o dos TG's \`{a}s pessoas interessadas na \'{a}rea de computa\c{c}\~{a}o na UFSM. Decidiu-se tamb\'{e}m permitir a divulga\c{c}\~{a}o do conte\'{u}do integral dos trabalhos, e n\~{a}o apenas resumos dos mesmos.
+
+Para suprir a necessidade de manter o sistema atualizado, decidiu-se incluir a funcionalidade de administra\c{c}\~{a}o do sistema atrav\'{e}s da Web. Deste modo, \'{e} poss\'{i}vel atualizar o conte\'{u}do do sistema em qualquer local e de forma independente do sistema operacional utilizado.
+
+Durante a etapa de defini\c{c}\~{o}es do sistema, realizou-se reuni\~{o}es com o coordenador do curso para melhor compreender o problema. Nesta etapa, analisou-se o processo de tramita\c{c}\~{a}o dos TG's no Curso e definiu-se os dados relevantes a serem divulgados, as pessoas que teriam permiss\~{a}o para atualizar o sistema, entre outras informa\c{c}\~{o}es.
+
+A partir da especifica\c{c}\~{a}o dos objetivos e funcionalidades do sistema, realizou-se um levantamento de ferramentas existentes que poderiam se utilizadas e/ou adaptadas para suprir as necessidades identificadas. Dentre os sistemas encontrados, destacam-se o Sistema de Publica\c{c}\~{a}o Eletr\^{o}nica de Teses e Disserta\c{c}\~{o}es - TEDE~\cite{tede} e o Sistema NOU-RAU~\cite{nourau}.
+
+Embora esses sistemas contemplem a maioria das funcionalidades desejadas e at\'{e} mesmo as superem, notou-se que a utiliza\c{c}\~{a}o desses sistemas poderia trazer algumas dificuldades. Em primeiro lugar, seria trabalhoso integrar esses sistemas com o \site do Curso, mantendo-se a identidade visual e a similaridade das interfaces com os usu\'{a}rios. Al\'{e}m disso, o uso de sistemas existentes poderia reduzir a liberdade da coordena\c{c}\~{a}o do Curso no gerenciamento dos TG's. Por fim, a adapta\c{c}\~{a}o desses sistemas \`{a}s necessidades espec\'{i}ficas ao gerenciamento de TG's poderia exigir um esfor\c{c}o consider\'{a}vel de compreens\~{a}o e modifica\c{c}\~{a}o de c\'{o}digo.
+
+Tendo em vista os fatores acima mencionados, decidiu-se desenvolver um sistema sob medida para a biblioteca digital de TG's. No entanto, teve-se o cuidado de projetar um sistema flex\'{i}vel que possa ser adaptado a novos requisitos que surjam durante ou ap\'{o}s o desenvolvimento, e que possa ser reutilizado por outros cursos e universidades. O sistema foi chamado de Biblioteca Digital de Trabalhos de Gradua\c{c}\~{a}o (BDTG).
+
+
+\section{Projeto}
+Ap\'{o}s o levantamento dos dados necess\'{a}rios para o desenvolvimento do sistema, iniciou-se o projeto atrav\'{e}s da modelagem da base de dados com as informa\c{c}\~{o}es referentes aos TG's. O diagrama UML \'{e} mostrado na figura \ref{f:diagrama-uml}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics [width = 0.9\textwidth]
+{img/diagrama.png}
+\caption{Diagrama UML da Base de Dados da BDTG}
+\label{f:diagrama-uml}
+\end{figure}
+
+A principal tabela do sistema \'{e} denominada \texttt{tg}. Esta tabela armazena as informa\c{c}\~{o}es relevantes sobre os trabalhos desenvolvidos, como por exemplo o nome do autor, o t\'{i}tulo e o resumo do trabalho. Devido ao fato de um professor poder ser orientador de v\'{a}rios trabalhos, decidiu-se criar uma tabela separada somente para os professores. Uma caracter\'{i}stica espec\'{i}fica do sistema \'{e} que um trabalho pode ter um orientador e um co-orientador, sendo por esse motivo adotado um sistema N-N entre as tabelas \texttt{professor} e \texttt{tg}. Na tabela resultante deste relacionamento, fica armazenada a informa\c{c}\~{a}o sobre o tipo de participa\c{c}\~{a}o do professor no trabalho em quest\~{a}o. Caso n\~{a}o existisse a co-orienta\c{c}\~{a}o nos trabalhos de gradua\c{c}\~{a}o, o professor poderia se relacionar com a tabela \texttt{tg} atrav\'{e}s de uma chave estrangeira.
+
+A tabela \texttt{arquivo} armazena o texto integral de cada TG, geralmente em formato PDF. Esta tabela tem um relacionamento 1-1 com a tabela \texttt{tg}, podendo ser englobado por esta. No entanto, optou-se por utilizar uma tabela separada no sistema por tr\^{e}s motivos principais: (a) devido ao arquivo ter caracter\'{i}sticas de uma entidade independente; (b) por ele armazenar o bin\'{a}rio do TG, que geralmente \'{e} um campo muito grande para ser inclu\'{i}do em consultas; e (c) porque alguns TG's poderiam n\~{a}o ter o arquivo em vers\~{a}o PDF dispon\'{i}vel, seja por motivos de sigilo ou por perda de arquivos. A tabela \texttt{categorias} foi criada para dar ao usu\'{a}rio a possibilidade de pesquisar TG's com algum assunto em comum. Um TG pode somente ser associado a uma categoria e uma categoria pode estar associada a v\'{a}rios TG's. As informa\c{c}\~{o}es sobre alunos n\~{a}o foram armazenadas em uma tabela separada porque os alunos n\~{a}o publicam mais de um TG em um mesmo curso e tamb\'{e}m por que os TG's devem ser desenvolvidos individualmente. Sendo assim, decidiu-se incluir o nome e a matr\'{i}cula do aluno como campos da tabela \texttt{tg}.
+
+A tabela \texttt{usuario} foi criada para que uma ou mais pessoas pudessem ter acesso ao sistema e tamb\'{e}m para garantir o acesso restrito ao sistema pelas pessoas que tem permiss\~{a}o para isso. Esta tabela n\~{a}o se relaciona com nenhuma outra tabela.
+
+Ap\'{o}s a modelagem de dados, escolheu-se o sistema gerenciador da base de dados para armazenar as informa\c{c}\~{o}es do sistema. Nesse caso, optou-se por utilizar o MySQL~\cite{mysql} por ser um gerenciador amplamente difundido e documentado. Além disso, servidores MySQL já encontravam-se instalados no servidor Web do NCC (N\'{u}cleo de Ci\^{e}ncia da Computa\c{c}\~{a}o), que hospeda atualmente o \site do Curso de Ci\^{e}ncia da Computa\c{c}\~{a}o, e no servidor do grupo PET - Ci\^{e}ncia da Computa\c{c}\~{a}o (PET-CC), que hospedaria o sistema durante a fase de implementa\c{c}\~{a}o. 
+
+Seguindo com o planejamento do sistema, decidiu-se utilizar o paradigma de orienta\c{c}\~{a}o a objetos para o desenvolvimento. Essa escolha deveu-se ao fato de que sistemas desenvolvidos utilizando classes s\~{a}o mais f\'{a}ceis de codificar e, principalmente, de alterar futuramente. A linguagem PHP5~\cite{php} foi escolhida principalmente por suportar orienta\c{c}\~{a}o a objetos e tamb\'{e}m por existir um servidor Apache com suporte a PHP tanto no NCC quando no grupo PET-CC. Além disso, a equipe de desenvolvimento já possuía conhecimento e experi\^{e}ncia no desenvolvimento de sistemas utilizando essa linguagem.
+
+%%Para garantir uma melhor organiza\c{c}\~{a}o do sistema, decidiu-se separar o sistema em duas partes: uma para disponibilizar os TGs ao p\'{u}blico e outra para gerenciar as informa\c{c}\~{o}es do sistema. Os arquivos de ambos sistemas utilizariam as mesmas classes para manipular os objetos e a base de dados, apenas os arquivos que processariam os dados e os que mostrariam os dados na tela ficariam em pastas separadas. Isso permitiria mover os arquivos de lugar mantendo o sistema funcionando apenas alterando os arquivos de configura\c{c}\~{a}o.
+
+Tamb\'{e}m decidiu-se organizar o c\'{o}digo separando-o em arquivos diferentes segundo sua fun\c{c}\~{a}o l\'{o}gica e tamb\'{e}m separar os arquivos que continham a mesma funcionalidade para o sistema. Assim o sistema ficou dividido em diret\'{o}rios, como mostra a figura \ref{f:arvore-dir}.
+
+\begin{figure}[ht]
+\centering
+\includegraphics [width = 6cm, height = 6cm]
+{img/arvoreDir.png}
+\caption{\'{A}rvore de Diret\'{o}rios do Sistema}
+\label{f:arvore-dir}
+\end{figure}
+
+No diret\'{o}rio classes, ficaram os arquivos que manipulavam os objetos; no diret\'{o}rio skins ficariam as pastas contendo os layouts do sistema, no caso apenas um layout tinha sido desenvolvido, que ficaria dentro da pasta default; na pasta db ficariam os arquivos que manipulariam a base de dados; no diret\'{o}rio docs ficaria a documenta\c{c}\~{a}o do sistema; No diret\'{o}rio includes ficaria um arquivo respons\'{a}vel por fazer a inclus\~{a}o dos arquivos necess\'{a}rio em todos os arquivos do sistema; no diret\'{o}rio scheme ficaria um arquivo com o c\'{o}digo SQL de cria\c{c}\~{a}o da base de dados; o diret\'{o}rio testes armazenaria arquivos de exemplo e arquivos para testes do sistema; no diret\'{o}rio raiz ficariam os arquivos que processariam as informa\c{c}\~{o}es fornecidas pelos usu\'{a}rios.
+
+Uma aten\c{c}\~{a}o especial foi dada para o sistema de busca de TGs, pois o mesmo deveria ser intuitivo para o usu\'{a}rio e tamb\'{e}m n\~{a}o poderia consumir muitos recursos computacionais. O sistema de busca tamb\'{e}m deveria ser gen\'{e}rico, para que pudesse ser utilizado tanto para pesquisas no site como para procurar TGs para altera\c{c}\~{o}es no sistema administrador.
+
+
+\section{Implementa\c{c}\~{a}o}
+Para que a fase de implementa\c{c}\~{a}o ocorresse de melhor forma, alguns detalhes referentes \`{a} codifica\c{c}\~{a}o, \`{a} armazenagem do sistema, divis\~{a}o e controle de tarefas, reuni\~{o}es e testes foram definidos para que o grupo pudesse desenvolver o sistema.
+
+Para implementar o sistema, optou-se por dividir as classes e arquivos entre os integrantes da equipe de desenvolvimento. As classes seriam implementadas separadamente e os arquivos seriam testados todos juntos somente quando fossem feitas reuni\~{o}es para testes. Como essa abordagem acarretaria uma s\'{e}rie de problemas, como c\'{o}digo inconsistente e perda de informa\c{c}\~{o}es, decidiu-se utilizar um sistema controlador de vers\~{o}es, o SVN~\cite{svn}, que possibilitaria que cada integrante desenvolvesse seus c\'{o}digos em diferentes computadores mas tendo sempre a vers\~{a}o atual das classes e arquivos corrigidos. O SVN foi instalado no servidor do PET-CC.
+
+As tarefas de implementa\c{c}\~{a}o foram divididas e o prazo para conclus\~{a}o das tarefas e do sistema foram calculados. Para melhor gerenciar o grupo de desenvolvimento foi utilizado o sistema gerenciador de tarefas NetOffice~\cite{netoffice} que j\'{a} estava sendo utilizado pelo grupo PET-CC para gerenciar suas atividades internas e atividades de grupo.
+
+Cada tabela da base de dados deu origem a uma classe. As funcionalidades definidas para serem implementadas no sistema administrador foram: inclus\~{a}o/altera\c{c}\~{a}o/exclus\~{a}o/busca de tgs, professores, arquivos e usu\'{a}rios; possibilidade de relacionar tgs com professores atrav\'{e}s da tabela orienta\c{c}\~{a}o e possibilidade de visualizar os dados cadastrados no sistema. O site deveria possibilitar aos usu\'{a}rios apenas a funcionalidade de pesquisar tgs, podendo essa pesquisa ser atrav\'{e}s do preenchimento dos dados buscados no sistema de busca, atrav\'{e}s do menu com os \'{u}ltimos tgs produzidos ou atrav\'{e}s das categorias de TGs presente na base de dados. Deveria tamb\'{e}m possibilitar ao usu\'{a}rio visualizar o arquivo do tg caso este estivesse dispon\'{i}vel.
+
+O layout inicial do sistema seria baseado no layout do site do curso de Ci\^{e}ncia da Computa\c{c}\~{a}o para garantir maior integra\c{c}\~{a}o entre os sistemas. Tamb\'{e}m seria poss\'{i}vel futuramente alterar o layout apenas incluindo um novo diret\'{o}rio no diret\'{o}rio skins e alterando o arquivo de configura\c{c}\~{a}o.
+
+Os testes e corre\c{c}\~{o}es eram realizados durante a implementa\c{c}\~{a}o do c\'{o}digo. Apenas arquivos testados e funcionando eram colocados no servidor SVN. Mesmo assim decidiu-se realizar uma bateria de testes para encontrar erros. Duas fases de testes foram criadas: a primeira era destinada a encontrar erros nos formul\'{a}rios de envio de dados e no processamento das informa\c{c}\~{o}es fornecidas pelo usu\'{a}rio; a segunda buscava verificar o comportamento do sistema em rela\c{c}\~{a}o \'{a} base de dados e com a l\'{o}gica programacional a ela associada. Com essas baterias de testes esperava-se encontrar maior parte dos erros e corrigi-los para disponibilizar uma vers\~{a}o est\'{a}vel e funcional do sistema. Outro cuidado tomado em rela\c{c}\~{a}o a testes e erros foi em rela\c{c}\~{a}o \`{a} seguran\c{c}a do sistema. Houve grande cuidado para evitar erros b\'{a}sicos de seguran\c{c}a cometidos contra sistemas on-line. Para isso, os dados fornecidos pelo usu\'{a}rio foram tratados para evitar poss\'{i}veis danos \`{a} base de dados.
+
+\section{ResultaDos e Avalia\c{c}\~{a}o}
+Atualmente o desenvolvimento do sistema se encontra na segunda bateria de testes. A primeira bateria de testes realizada permitiu encontrar diversos erros, como por exemplo, inclus\~{a}o duplicada de dados, inclus\~{a}o de nomes com n\'{u}meros, entre outros. Os erros eram corrigidos a medida que eram descobertos. Durante a atual fase de testes foi poss\'{i}vel detectar alguns erros relacionados a inclus\~{a}o e exclus\~{a}o das informa\c{c}\~{o}es na base de dados. Um grave erro relacionado \`{a} base de dados era que sistema estava excluindo professores, mas n\~{a}o exclu\'{i}a os tgs aos quais ele estava relacionado, esse erro causava problema na visualiza\c{c}\~{a}o das informa\c{c}\~{o}es de modo que o administrador n\~{a}o conseguia detectar os tgs que n\~{a}o tinham orientador, n\~{a}o podendo dessa forma consertar o erro.
+
+Durante a segunda fase de testes foram utilizados dados reais de tgs j\'{a} publicados no curso de Ci\^{e}ncia da Computa\c{c}\~{a}o. Isso permitiu verificar como o sistema reagiria a dados reais. Apesar dos erros encontrados, o sistema est\'{a} se comportando conforme o esperado. Todos os requisitos previstos levantados juntamente com a coordena\c{c}\~{a}o do curso e tamb\'{e}m os requisitos definidos na fase de planejamento do sistema foram implementados. Ap\'{o}s o sistema ser instalado e colocado em uso, espera-se que modifica\c{c}\~{o}es sejam solicitadas para melhoria e para preencher requisitos que possam surgir.
+
+O sistema j\'{a} se encontra operacional. Existem tr\^{e}s formas principais de consulta por TG's, como pode ser observado na figura \ref{f:pesquisa}. As tr\^{e}s formas s\~{a}o: listando os \'{u}ltimos TG's publicados, acessando os TG's atrav\'{e}s das categorias existentes na base de dados e pesquisando pelas informa\c{c}\~{o}es desejadas no formul\'{a}rio de busca.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics [width = 12cm, height = 12cm]
+{img/busca.png}
+\caption{P\'{a}gina de Pesquisa de TG's}
+\label{f:pesquisa}
+\end{figure}
+
+O sistema administrador permite dar manuten\c{c}\~{a}o em todos os dados do sistema, como mostra a figura \ref{f:edicao}, na qual o usu\'{a}rio estaria realizando uma altera\c{c}\~{a}o em um TG espec\'{i}fico.
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics [width = 10cm, height = 8cm]
+{img/edicao.png}
+\caption{Edi\c{c}\~{a}o dos dados de um TG}
+\label{f:edicao}
+\end{figure}
+
+
+O objetivo de fornecer um meio de disponibiliza\c{c}\~{a}o aos alunos e comunidade acad\^{e}mica foi alcan\c{c}ado com sucesso. Atrav\'{e}s do sistema, qualquer pessoa poder\'{a} ter acesso aos trabalhos de gradua\c{c}\~{a}o disponibilizados pelo curso atrav\'{e}s da internet. O sistema administrador facilita a manuten\c{c}\~{a}o das informa\c{c}\~{o}es, possibilitando dessa forma que o sistema esteja sempre atualizado.
+
+Outro resultado alcan\c{c}ado foi a cria\c{c}\~{a}o de um sistema facilmente reutiliz\'{a}vel. Os cuidados tomados na fase de planejamento e codifica\c{c}\~{a}o para a cria\c{c}\~{a}o de um sistema gen\'{e}rico, bem organizado e facilmente alter\'{a}vel permitem que a BDTG seja adaptada em outras situa\c{c}\~{o}es ou casos semelhantes. A BDTG pode ser reutilizada sem grandes altera\c{c}\~{o}es, apenas modificando os arquivos layout, sua reutiliza\c{c}\~{a}o em outros cursos da UFSM ou de outras universidades. O sistema tamb\'{e}m pode ser modificado e adaptado a problemas semelhantes, nesse caso, criando alguma classe ou p\'{a}gina de interface do sistema.
+
+
+\section{Conclus\~{a}o e Trabalhos Futuros}
+Este artigo apresentou as etapas do desenvolvimento do BDTG, um sistema para disponibilizar os trabalhos de gradua\c{c}\~{a}o do curso de Ci\^{e}ncia da Computa\c{c}\~{a}o da UFSM. Com o desenvolvimento desse sistema, duas principais contribui\c{c}\~{o}es foram atingidas: a primeira \'{e} um meio para disponibilizar ao p\'{u}blico em geral os trabalhos desenvolvidos e a divulga\c{c}\~{a}o das atividades realizadas no curso; outra contribui\c{c}\~{a}o \'{e} um sistema cujo c\'{o}digo \'{e} facilmente reutiliz\'{a}vel para situa\c{c}\~{o}es semelhantes ao problema resolvido e a utiliza\c{c}\~{a}o do mesmo por outros cursos e universidades somente alterando os arquivos de configura\c{c}\~{a}o.
+
+Depois das baterias de testes serem conclu\'{i}das e das modifica\c{c}\~{o}es necess\'{a}rias serem feitas, o sistema ser\'{a} disponibilizado sob a licen\c{c}a~\nocite{fsf} GNU~\cite{gnu} para que o mesmo seja melhorado e aproveitado por pessoas e organiza\c{c}\~{o}es que t\^{e}m interesse em utiliz\'{a}-lo e modificado para as necessidades espec\'{i}ficas de cada institui\c{c}\~{a}o.
+
+Com trabalhos futuros, podemos mencionar a expans\~{a}o da BDTG para o armazenamento de Trabalhos de P\'{o}s Gradua\c{c}\~{a}o. Inicialmente para Teses de Mestrado, visto que o curso passou a disponibilizar a realiza\c{c}\~{a}o do mesmo, e futuramente pra Teses de Doutorado. Tamb\'{e}m a integra\c{c}\~{a}o da biblioteca com a BDTD disponibilizada pelo governo, contribuindo ainda mais para o objetivo do desenvolvimento da mesma. E o aprimoramento das classes bases do sistema a fim de facilitar a personaliza\c{c}\~{a}o da mesma, disponibilizando-a para outros curso.
+
+\bibliographystyle{ref/sbc}
+\bibliography{ref/bib_tg_sipm_ref}
+
+\end{document}
+
+%% <!-- Local IspellDict: brasileiro -->
+%% <!-- Local Variables: -->
+%% <!-- mode:flyspell -->
+%% <!-- End: -->

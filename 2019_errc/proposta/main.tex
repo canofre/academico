@@ -1,0 +1,117 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Oficina Nível Básico - Configuração de Switches Gerenciáveis}
+
+\author{Ronaldo Canofre  M. dos Santos\inst{1}, Maurício M. Fiorenza\inst{1}}
+
+\address{Coordenadoria de Redes Infraestrutura e Suporte -- Diretoria de Tecnologia da 
+    \\Informação e Comunicação -- Fundação Universidade Federal do Pampa 
+    \\ (UNIPAMPA) -- 97.546-550 -- Alegrete -- RS -- Brasil
+  \email{canofre@inf.ufrgs.br, mauriciofiorenza@unipampa.edu.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{abstract}
+The application of academic knowledge in the practical activities provides an amplification in the learning and knowledge, having that in mind, this document approaches the proposal of a workshop to be realized in the XVII Escola Regional de Redes de Computadores. The main theme of the proposal is the configuration and maintenance of manageable switches and it aims to provide participants with an initial theoretical knowledge as well as practical experience via the network simulator.
+\end{abstract}
+     
+\begin{resumo} 
+  A aplicação do conhecimento acadêmcio nas atividades práticas proporciona uma ampliação no aprendizado e conhecimento, dessa forma, este documento aborda a proposição de uma oficina a ser realizada na XVII Escola Regional de Redes de Computadores. A proposta tem como tema principal a configuração e manutenção de \textit{switches} gerenciáveis, e busca proporcionar aos participantes um conhecimento teórico inicial, assim como uma experiência prática via simulador de rede.
+\end{resumo}
+
+
+\section{Contextualização}
+
+A interconexão de dois ou mais computadores por um meio de comunicação, de forma que possibilite o compartilhamento de informações e recursos, já define uma rede de computadores\cite{redes17}, a qual pode se expandir inúmeros dispositivos com distintas finalidades. No entanto, independente da sua dimensão, uma rede não pode ser consebida somente para interconectar equipamentos, sendo impressindível uma infraestrutura que proporcione a qualidade necessária para atender a demanda de forma segura e eficiente.
+
+A importância a ser dada para este área pode ser mensurada quando tem-se a estimativa de que até 2020, 75\% das empresas podem sofrer rupturas de negócios devido a falta de conhecimento em infraestrurua e operações de TI \cite{gartner}. Ferramentas como \textit{switches} gerenciáveis, são uma das inúmeras formas de otimizar a administração da rede e ao mesmo tempo proporcionar maior qualidade e segurança, dentre outros benefícios.
+
+Este tipo de equipamento vem sendo utilizado em diversas soluções, independente do setor ou da dimensão infraestrutura física da rede. Instituições de ensino, como a UNIPAMPA e a UFSM utilizam estes equipamentos em sua infraestrutura interna. Empresas de telecomunicação como a Vogel Telecom utilizam também na infraestrutura de atendimento ao público. Setores da saúde, do judiciário, de transporte entre outras áreas, fazem uso de equipamentos deste tipo para manter e otimizar a sua rede \cite{cisco:19}.
+
+Dessa forma, considerando a amplitude da utilização desta ferramenta, a presente oficina tem o objetivo proporcionar uma experiência \textit{hans on}, através de atividades práticas de configuração básica para o funcionamento inicial e gerenciamento básico destes dispositivos. A sua  relevância consiste na aproximação do conhecimento acadêmico ao cotidiano da administração de uma rede de computadores, bem como a exposição de novas possibilidades para elaboração de novas redes.  
+
+Adicionalmente, também será proporcionado o conhecimento do software  de  emulação de rede \textit{Packet Tracer}, o qual permite a configuração, simulação, impementação e testes de ambientes de rede com cenários reais. Dessa forma, é possível utilizado a ferramenta tanto para fins educacionais como para testes de comportamento efetivo de uma rede, tornando-se uma ferramenta auxilar no aprendizado.
+
+\section{Tópicos abordados} \label{sec:topicosabordados}
+
+Os tópicos serão abordados em uma ordem lógica desde os conhecimentos teóricos até a configuraçõe efetiva dos dispositivos. A fixação desses conhecimentos será realizada através de exercícios práticos preparados e diretamente relacionados com os exemplos e conteúdo abordado. 
+
+Estes exercícios serão realizados no \textit{Packet Tracer}, uma ferramenta de simulação de redes desenvolvida pela Cisco, que permite a criação de cenários reais, visto que os dispositivos disponibilzados para configuração disponibilizam em grande parte as mesmas funcionalidades e necessidades de configuração, bem como os comandos existentes nos equipamentos reais. 
+
+Como recursos auxiliares, serão  utilizados laboratórios e exemplos disponibilizados por Brito (2014) e
+\nocite{brito:14} também os diversos conteúdos existente na internet relacionados ao tema, tais como os
+\textit{blogs} Brainwork \nocite{brainwork} e DLTec \nocite{dltec}.
+
+\subsection{Introdução aos dispositivos de rede}
+
+Devido à amplitude da oficina, inicialmente serão apresentados tópicos gerais buscando homogeneizar o conhecimento sobre os tipos de \textit{switches} de rede, abordando basicamente a diferença entre os equipamentos gerenciáveis e não gerenciáveis e sobre a sua classificação quanto às camadas de atuação. Posteriormente, serão repassadas informações sobre o funcionamento do sistema operacional dos dispositivos de rede e a sua estrutura hierárquica. 
+
+Será realizada uma introdução teórica sobre as forma de acesso via \textit{Graphical Unit Interface} (GUI) e \textit{Comand Line Interface} - (CLI), abordando as configurações necessárias para realizar o acesso via CLI, demonstrando os distinstos componentes necessários e possíves de acordo com as conexões dos equipamento.
+
+\subsection{Configuração básica}
+
+Após a configuração de acesso serão demonstrados os modos de operação em \textit{switches} gerenciáveis, a navegação entre estes modos de operação e a estrutura dos comandos de um modo geral, bem como uma explicação sobre a nomenclatura das interfaces físicas nestes equipamentos.
+
+Sequencialmente serão abordadas as configurações básicas para que estes dispositivos entrem em funcionamentos, incluindo configuração de hostname, ip, logs, DNS, data e hora, NTP, SNMP, contas de usuário e níveis de acesso e configurações de acesso via ssh. 
+
+\subsection{Configuração avançada}
+
+Neste tópico pretende-se realizar uma abordagem sobre \textit{Virtual Lans} (VLANs), de forma básica devido a amplitude do tema, mas que permita realizar as atividades de configuração que emvolvem o uso de redes virtuais, bem como testar e demonstrar sua utilização e características. 
+
+Serão também tratadas as configurações mais normalmente utilizadas nas portas de um \textit{switch} gerenciável, tais como alteração de modo de operação, ativação de energia em equipamentos que proporcionam essa alimentação, uplink entre equipamentos e as configurações que envolvam VLANs, tais como atribuição, restrição e protocolos de configuração automática de redes virtuais.
+
+Por fim, serão abordados tópicos adicionais como distintas formas backup e restore, restauração ao estado original, estados de erro e configurações de recuperação automática e resolução de problemas, dentre outros. 
+
+\section{Organização}
+
+\subsection{Proponentes}
+Maurício Martinuzzi Fiorenza, possui graduação em Ciência da Computação pela Universidade Regional Integrada do Alto Uruguai e das Missões (2011). Atualmente é analista de TI da Universidade Federal do Pampa. Tem experiência na área de Ciência da Computação, com ênfase em Segurança da Informação e Redes.
+
+Ronaldo Canofre M. dos Santos, Graduado em Ciência da Computação pela Universidade Federal de Santa Maria (2007), com especialização em Aplicações para web da FURG (2016). Analista de Tecnologia da Informação na Universidade Federal do Pampa desde de 2013, atualmente trabalha na área de Administração de redes com a instalação e configuração ativos de rede.
+
+\subsection{Público alvo e recursos}
+Tendo em vista a abrangência do conteúdo a ser abordado, não existe uma restrição de público-alvo no quesito de formação acadêmica, sendo destinado tanto a alunos quanto a profissionais da áreas, desde que possuam interesse no conteúdo da oficina.
+
+Com relação aos conhecimentos prévios, também não são necessários conhecimentos específicos, sendo esperado que se tenha ao menos uma noção de linha de comando e configurações e funcionamento de rede, tais como entendimento de endereço físico e lógico.
+
+Levando em consideração o tempo de realização, o conhecimento geral dos participantes e também a amplitude do conteúdo a ser abordado, a aplicação desta oficina será realizada de forma resumida no tempo proposto, podendo não englobar os assuntos finais. Sua aplicação e resultados seriam muito melhor aproveitados pelos participantes caso possibilitada a ampliação da sua duração para o dobro do tempo previsto. 
+
+Por fim, relacionado aos recursos, é necessário por parte da organização, um laboratório com o software Packet Tracer instalado e por parte dos participantes, o cadastro prévio na plataforma NetAcad \cite{netacad:19}.
+
+\bibliographystyle{sbc}
+\bibliography{sbc-template}
+
+\end{document}

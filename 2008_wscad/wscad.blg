@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: wscad.aux
+The style file: conf/wscad_ieee.bst
+Database file #1: ref-wscad.bib
+I was expecting a `,' or a `}'---line 62 of file ref-wscad.bib
+ :   
+ :   journal   = { Journal of Grid Computing},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--empty journal in cappello
+Warning--empty year in cappello
+You've used 23 entries,
+            2118 wiz_defined-function locations,
+            607 strings with 7230 characters,
+and the built_in function-call counts, 5810 in all, are:
+= -- 545
+> -- 287
+< -- 1
++ -- 119
+- -- 94
+* -- 296
+:= -- 1026
+add.period$ -- 70
+call.type$ -- 23
+change.case$ -- 117
+chr.to.int$ -- 0
+cite$ -- 25
+duplicate$ -- 206
+empty$ -- 480
+format.name$ -- 94
+if$ -- 1203
+int.to.chr$ -- 0
+int.to.str$ -- 23
+missing$ -- 9
+newline$ -- 118
+num.names$ -- 46
+pop$ -- 175
+preamble$ -- 1
+purify$ -- 93
+quote$ -- 0
+skip$ -- 158
+stack$ -- 0
+substring$ -- 164
+swap$ -- 28
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 88
+warning$ -- 2
+while$ -- 50
+width$ -- 25
+write$ -- 243
+(There was 1 error message)

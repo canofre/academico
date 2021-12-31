@@ -1,0 +1,175 @@
+############################ AVALIADOR 1 ########################################
+Comentários para o autor: Comente o que seu entendimento sobre o artigo. Dê justificativas para cada uma das notas atribuídas em cada item (originalidade, relevância, mérito, qualidade do texto). Ressalte as qualidades e aponte possíveis erros do texto. Explique como o artigo poderia ser melhorado.
+    Este artigo apresenta uma análise de desempenho de duas implementações
+    de máquinas virtuais  oferecidas  pelo Xen. Na  primeira  alternativa,
+    chamada  paravirtualização, o  sistema operacional   deve ser alterado
+    para se adaptar ao ambiente virtual oferecido. Na segunda alternativa,
+    chamada   virtualização total, a   máquina   virtual oferece todos  os
+    recursos de uma máquina  real, podendo ou não  utilizar de recursos de
+    hardware  específicos, e  o  sistema   operacional  não precisa    ser
+    alterado.  O   artigo  avalia  as duas  alternativas   com  relação ao
+    desempenho da comunicação de  rede,  taxas de transferência de  disco,
+    desempenho da memória e utilização  de CPU. As duas implementações são
+    comparadas   entre  si e também  com  um   sistema operacional rodando
+    diretamente no  hardware.   A principal  conclusão  do  artigo é que a
+    paravirtualização é superior  a virtualização total  em quase todos os
+    benchmarks realizados, com exceção aos benchmarks de teste de memória.
+
+    O artigo está bem escrito  e apresenta os resultados  de modo claro  e
+    objetivo. Muito embora o artigo não  tenha idéias originais, a análise
+    de desempenho  esta bem feita   e os  resultados apresentados  são  de
+    interesse para a comunidade acadêmica.
+
+    # Vocês deveriam tentar explicar a anomalia na Figura 8.  Por que a taxa
+    #de transferência   apresenta  um comportamento  tão  diferente  para o
+    #tamanho 1GB?
+
+    Comentários menores (typos):
+
+    #Em referências a seçÕes, figuras e tabelas, utilizem letras maíusculas
+    #para as iniciais (Seção, Figura, Tabela).
+
+    #Pág. 1, Col. 1, Linha -7: "tem"-> "têm"
+	#Pág. 2, Col. 1, Par. 4: "de um o vários" -> "de um ou vários"
+    #Pág. 2, Col. 1, Par. 6: "contornando estás" -> "contornando estas"
+    #Pág. 2, Col. 2, Par. 4: "o espaço" -> "do espaço"
+	#Pág. 3, Col. 2, Par. 4: "foram realizaram-se" -> "foram realizadas"
+    #Pág. 6, Col. 1, Linha -1: "máquinas" -> "máquina"
+    #Pág. 7, Col. 1, Par. 1: "utilizada" -> "utilizadas"
+    #Referência [14]: "Tool" -> "Tools"
+
+############################ AVALIADOR 2 ########################################
+Comentários para o autor: Comente o que seu entendimento sobre o artigo. Dê justificativas para cada uma das notas atribuídas em cada item (originalidade, relevância, mérito, qualidade do texto). Ressalte as qualidades e aponte possíveis erros do texto. Explique como o artigo poderia ser melhorado.
+    O artigo descreve uma avaliação de desempenho com Xen comparando dois esquemas de virtualização possíveis e sem virtualização. São considerados o desempenho de recursos de rede, disco, memória e CPU.
+
+    O trabalho de medição é bem executado: as condições em que os experimentos foram realizados são descritas adequadamente, e os resultados apresentados e comentados a contento.
+
+    #Há erros ao de unidade ao se comentar resultados e em legendas de figuras, que fala em 512 bytes, 512 Kbytes e 48 Mbytes; após, na legenda, fala em 512 Mbytes e 45 Kbytes, 45 Gigabytes, 62 Mbytes. Acabou-se fazendo uma enorme confusão no texto, o que poderia levar ao comprometimento do artigo (o que mais está errado?).
+
+    #O gráfico na figura 3 deveria ser apresentado em log-log, e não log-linear. O decaimento das curvas é fruto do uso de escalas diferentes. Os resultados em 512 KB parecem muito similares, ao passo que no gráfico seguinte, que mais ou menos continua o anterior, parecem bem distintos. Não é possível checar se está correto.
+
+    O comportamento de uma das curvas no gráfico da figura 8 é estranho. A taxa de transferência de disco tem um pico em 1GB, e depois cai. Os autores não justificam esse fenômeno, que é contra-intuitivo.
+
+		#O texto está escrito e organizado de forma adequada. Existem alguns erros de Português, particularmente quanto à separação entre sujeito e predicado, e ao uso de crase.:
+		#- o suporte à virtualização, ampliou: não tem vírgula
+		#- o conjunto de referências [12, 8, 15, 14] não é muito forte, pois trata-se de um TR, duas auto-referências a evento menor e uma quarta que não diz o que ser (incompleta)
+		#- suporte nativo a virtualização: à
+		#- de um o vários: ou vários
+		#- 2.1 Paravitualização
+		#- estás limitações: estas
+		#- resultando em um baixo impacto no: menor impacto
+		#- cópia idêntica do sistema físico, acaba: sem vírgula
+		#- overhead: anglicismo desnecessário, usar sobrecarga
+		#- VWWare: VMWare
+		#- a utilização desta técnica, já foi: sem vírgula
+		#- com relação a virtualização: à - NAO MODIFIQUEI
+		#- de forma estática, de forma que
+		#- sendo a saída deste benchmark, o resultado
+		#- 512 Mbytes: Kbytes?
+		#- do protocolo TCP, são mostradas: sem vírgula
+		#- no gráfico 4: na figura 4
+		#- 45 MB ou 47 MB??
+		#- MB ou Mbytes?
+		#- mensagens superiores a 62 Kbytes, deve-se
+		#- os testes realizados, englobaram: sem vírgula
+		#- englobaram e englobaram
+		#- gráfico 8
+		#-  '2GM' no eixo x.
+		- evitar iniciar uma frase com "Isto para" ou "Isso pelo"
+		#- com relação a utilização: à - NAO MUDEI
+		#- De modo geral a virtualização: De modo geral, a virtualização
+		#- Porem: Porém
+
+############################ AVALIADOR 3 ########################################
+	Comentários para o autor: Comente o que seu entendimento sobre o artigo. Dê justificativas para cada uma das notas atribuídas em cada item (originalidade, relevância, mérito, qualidade do texto). Ressalte as qualidades e aponte possíveis erros do texto. Explique como o artigo poderia ser melhorado.
+	O artigo estuda os overheads de usar VM com Xen.
+
+	Pros:
+	  - Bom trabalho experimental.
+
+	Cons:
+	  #- Estes resultados são novos? Esta é a primeira avaliação de
+	  #hipervisores? Se não é, qual a contribuição.
+	  C: Com relação a avaliação de hipervisores o trabalho não é novo, mas
+	  sim com relação a comparação do XEN em suas duas implementações 
+	  #- Falta de "insight", de explicação dos resultados. (Falta de clareza e conhecimento)
+
+	Comentários:
+	- Não é claro como o paper avança o estado da arte em relação a
+	[12...14]. Por favor, tentem motivar o trabalho melhor...
+	#2.1 tem gralha no título...
+	#- A explicação  de como funcionam os device drivers é em Para e HVM é fundamental e  devia ser  aprofundada.
+	#- Pq HVM falha para mais de 47MB?
+	#- Pq HVM é um pouco melhor em memória?
+	- Qual a conclusão que eu, como leitor, deveria tirar? Os resultados
+	são intrinsicos ou poderiam ser melhorados pela implementação?
+	#Aplicam-se  a outros sistemas?
+	C: nos últimos parágrafos foi dito que depende do SO
+############################ AVALIADOR 4 ########################################
+	Comentários para o autor: Comente o que seu entendimento sobre o artigo. Dê justificativas para cada uma das notas atribuídas em cada item (originalidade, relevância, mérito, qualidade do texto). Ressalte as qualidades e aponte possíveis erros do texto. Explique como o artigo poderia ser melhorado.
+		O artigo faz uma comparação de desempenho entre duas abordagens de virtualização do Xen: paravirtualização e virtualização total com suporte de hardware.
+		Os resultados mostram que o en paravirtualizado é, em geral, mais eficiente do que a virtualização total.
+		O artigo está muito bem escrito e apresenta resultados.
+
+		#Os resultados deveriam ter mais explicações sobre o porque da diferença de eficiência entre as duas abordagens de virtualização.
+
+	   # Não entendi muito bem a contribuição do artigo em termos de resultados novos. 
+	   C: Comparação Xen PVM x Xen HVM não havia sido feita ainda, ao menos não encontrei
+	   # Fizeram experimentos apenas para comprovar o que existe na literatura? 
+	   C: A literatura diz que HVM é melhor que PVM, mas o que foi mostrado no trabalho é que no caso do Xen isso não se aplica, e quando se aplica a diferença é muito pouca
+	   # Quais são as novidades do seu trabalho?
+	   C: Comparação Xen HVM x Xen PVM
+
+	Na avaliação de rede, como espera que as abordagens se comportem com uma rede mais rápida (mais comumente utilizadas em ambientes HPC que têm utilizado muito a abordagem da virtualização)?
+
+		#Por que os valores 512 bytes, 512 KB e 48MB foram utilizados?
+
+		#No desempenho de rede, conclusões semelhantes foram tiradas de outros trabalhos. O que é diferente aqui?
+		C: A análise foi realizada levando em consideração formas diferentes de virtualização presentes em outros trabalhos, visto que nenhum deles comparou Xen HVM
+
+		#Ainda nos resultados de rede, Fig 3: por que PVM é tão mais rápida que HVM e tão próxima da máquina real_ Intuitivamente não deveria se o contrário? (ver coment anterior: Já não existem resultados equivalentes na literatura?)
+
+		#Label da Fig. 4: 45 GB???
+
+		No experimento com avaliação da memória, toda a memória estava sendo utilizada pela aplicação? Qual era o padrão de utilização em termos de quantidade de memória alocada?
+
+		Por que razão, HVM tem desempenho tão baixo quando comparada com PVM para transf de arquivos pequenos?
+
+		Por que há um pico na curva da máquina virtual com transfs de arquivo de tam 1GB (Fig. 8)?
+
+		Outros coments:
+
+		#Ferramentas tem sido propostas --> Ferramentas têm sido propostas
+
+		#Um o vários --> um ou vários
+
+		#e e o suporte --> e o suporte
+
+		#título da seção 2.1: Paravitualização  Paravirtualização
+
+		#VWWare --> WMWare
+
+		#Suporte a virtualização --> suporte à virtualização
+
+		#Vantagens com a execução um MMV --> vantagens com a execução tais como, um MMV
+
+		#Compartilhamento o espaço --> compartilhamento do espaço
+
+		#Passassem --> passem
+
+		#Foram realizaram-se --> realizaram-se (foram realizadas)
+
+		#Mensagens(pequeno,...) --> mensagens (pequeno,...)
+
+		#512 Mbytes ou 512 Kbytes?
+
+		#Da máquinas real --> da máquina real - não encontrei
+
+		#Técnicas utilizada --> técnicas utilizadas - não encontrei
+
+		#Em relação as máquinas --> em relação às máquinas - NAO MUDEI
+
+    #Porem --> Porém
+
+    #Ref 17: Microsistms --> microsystems
+

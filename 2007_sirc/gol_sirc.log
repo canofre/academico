@@ -1,0 +1,320 @@
+This is pdfTeX, Version 3.14159-1.10b (Web2C 7.4.5) (format=pdflatex 2006.9.11)  31 JUL 2007 22:44
+**gol_sirc.tex
+(./gol_sirc.tex{/usr/share/texmf/pdftex/config/pdftex.cfg}
+LaTeX2e <2001/06/01>
+Babel <v3.7h> and hyphenation patterns for american, french, german, ngerman, p
+ortuges, nohyphenation, loaded.
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2001/04/21 v1.4e Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size12.clo
+File: size12.clo 2001/04/21 v1.4e Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./ref/sbc-template.sty
+
+LaTeX Warning: You have requested package `ref/sbc-template',
+               but the package provides `sbc-template'.
+
+Package: sbc-template 2001/06/09
+(/usr/share/texmf/tex/latex/misc/geometry.sty
+Package: geometry 2002/07/08 v3.2 Page Geometry
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@dimlist=\toks15
+
+(/usr/share/texmf/tex/latex/config/geometry.cfg
+File: geometry.cfg 2001/06/05 v1.0 teTeX (uncustomised setup)
+))
+(/usr/share/texmf/tex/latex/caption/caption2.sty
+Package: caption2 2002/08/03 v2.1 Customising captions (AS)
+\captionmargin=\dimen107
+\captionwidth=\dimen108
+\captionindent=\dimen109
+Package caption2 Info: Running in caption2 v2.0 compatibility mode on input lin
+e 147.
+\captionlinewidth=\dimen110
+)
+(/usr/share/texmf/tex/latex/psnfss/times.sty
+Package: times 2002/09/08 PSNFSS-v9.0a (SPQR) 
+)
+\c@instn=\count90
+
+(/usr/share/texmf/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2002/04/07 v2.5 Sectioning titles
+\ttl@box=\box26
+\beforetitleunit=\skip43
+\aftertitleunit=\skip44
+\ttl@plus=\dimen111
+\ttl@minus=\dimen112
+\titlewidth=\dimen113
+\titlewidthlast=\dimen114
+\titlewidthfirst=\dimen115
+))
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2001/07/07 v1.0n Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 80.
+
+(/usr/share/texmf/tex/latex/graphics/pdftex.def
+File: pdftex.def 2002/06/19 v0.03k graphics/color for pdftex
+\Gread@gobject=\count91
+))
+\Gin@req@height=\dimen116
+\Gin@req@width=\dimen117
+)
+(/usr/share/texmf/tex/latex/html/url.sty
+Package: url 1999/03/02  ver 1.4  Verb mode for urls, email addresses, and file
+ names
+)
+(/usr/share/texmf/tex/generic/babel/babel.sty
+Package: babel 2001/03/01 v3.7h The Babel package
+
+(/usr/share/texmf/tex/generic/babel/portuges.ldf
+Language: portuges 2001/02/16 v1.2o Portuguese support from the babel system
+
+(/usr/share/texmf/tex/generic/babel/babel.def
+File: babel.def 2001/03/01 v3.7h Babel common definitions
+\babel@savecnt=\count92
+\U@D=\dimen118
+)
+\l@brazil = a dialect from \language\l@portuges 
+Package babel Info: Making " an active character on input line 126.
+))
+(/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2001/07/10 v0.99a Input encoding file 
+
+(/usr/share/texmf/tex/latex/base/latin1.def
+File: latin1.def 2001/07/10 v0.99a Input encoding file 
+))
+(/usr/share/texmf/tex/latex/tools/xspace.sty
+Package: xspace 1997/10/13 v1.06 Space after command names (DPC)
+) (./gol_sirc.aux)
+\openout1 = `gol_sirc.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
+LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 41.
+
+(/usr/share/texmf/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+-------------------- Geometry parameters
+paper: a4paper
+landscape: --
+twocolumn: --
+twoside: --
+asymmetric: --
+h-parts: 85.35826pt, 426.79135pt, 85.35826pt
+v-parts: 99.58464pt, 674.33032pt, 71.13188pt
+hmarginratio: --
+vmarginratio: --
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: pdftex
+-------------------- Page layout dimensions and switches
+\paperwidth  597.50787pt
+\paperheight 845.04684pt
+\textwidth  426.79135pt
+\textheight 674.33032pt
+\oddsidemargin  13.08827pt
+\evensidemargin 13.08827pt
+\topmargin  -9.68535pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 44.0pt
+\marginparsep   10.0pt
+\columnsep  10.0pt
+\skip\footins  10.8pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+
+(/usr/share/texmf/tex/context/base/supp-pdf.tex
+(/usr/share/texmf/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Missing
+\protectiondepth=\count93
+\scratchcounter=\count94
+\scratchtoks=\toks16
+\scratchdimen=\dimen119
+\scratchskip=\skip45
+\scratchmuskip=\muskip10
+\scratchbox=\box27
+\scratchread=\read1
+\scratchwrite=\write3
+\zeropoint=\dimen120
+\minusone=\count95
+\thousandpoint=\dimen121
+\emptytoks=\toks17
+\nextbox=\box28
+\nextdepth=\dimen122
+\everyline=\toks18
+\!!counta=\count96
+\!!countb=\count97
+\recursecounter=\count98
+)
+loading : Context Support Macros / PDF
+\nofMPsegments=\count99
+\nofMParguments=\count100
+\everyMPtoPDFconversion=\toks19
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <16> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 43.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 43.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 43.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 43.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 43.
+
+Overfull \hbox (35.67882pt too wide) in paragraph at lines 43--43
+ [][] 
+ []
+
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 43.
+(/usr/share/texmf/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Try loading font information for OMS+pcr on input line 43.
+
+(/usr/share/texmf/tex/latex/psnfss/omspcr.fd
+File: omspcr.fd 
+)
+LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 43.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/it' tried instead on input line 49.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 54.
+ [1
+
+{/usr/share/texmf/dvips/config/pdftex.map}]
+Underfull \hbox (badness 2662) in paragraph at lines 75--76
+[]/ptmr7t@12.0pt/O pr[]oximo est[]agio do pro-jeto do al-go-ritmo pa-ra-lelo se
+ chama fase de
+ []
+
+[2]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 89.
+ (/usr/share/texmf/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 89.
+
+Underfull \hbox (badness 1701) in paragraph at lines 95--96
+/ptmr7t@12.0pt/a-liza a troca de li-nhas en-tre pro-ces-sos atrav[]es de ro-ti-
+nas de en-vio blo-que-an-tes
+ []
+
+[3] <img/esquema.png, id=30, 827.09pt x 1051.93pt>
+File: img/esquema.png Graphic file (type png)
+ <use img/esquema.png>
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 100.
+
+
+(/usr/share/texmf/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 100.
+
+Underfull \vbox (badness 6268) has occurred while \output is active []
+
+ [4 <./img/esquema.png>]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 118.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 118.
+ <img/20x20.png, id=36, 469.755pt x 328.8285pt>
+File: img/20x20.png Graphic file (type png)
+
+<use img/20x20.png>
+LaTeX Font Info:    Font shape `OT1/phv/bx/it' in size <10> not available
+(Font)              Font shape `OT1/phv/b/it' tried instead on input line 127.
+LaTeX Font Info:    Font shape `OT1/phv/b/it' in size <10> not available
+(Font)              Font shape `OT1/phv/b/sl' tried instead on input line 127.
+ <img/500x500.png, id=37, 433.62pt x 303.534pt>
+File: img/500x500.png Graphic file (type png)
+
+<use img/500x500.png> <img/2500x2500.png, id=38, 433.62pt x 303.534pt>
+File: img/2500x2500.png Graphic file (type png)
+
+<use img/2500x2500.png> [5] [6 <./img/20x20.png> <./img/500x500.png>]
+Underfull \hbox (badness 5924) in paragraph at lines 157--158
+/ptmr7t@12.0pt/Este ar-tigo apre-sen-tou uma compara[][]ao en-tre a implemen[][
+]ao se-rial e duas
+ []
+
+(./gol_sirc.bbl [7 <./img/2500x2500.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 15--19
+[]/ptmr7t@12.0pt/Wikip[]edia (2007).  Jogo da vida.  Dis-pon[]^^Pvel em:
+ []
+
+) [8] (./gol_sirc.aux) ) 
+Here is how much of TeX's memory you used:
+ 2253 strings out of 95431
+ 28718 string characters out of 1190104
+ 86272 words of memory out of 1000001
+ 5216 multiletter control sequences out of 10000+50000
+ 28724 words of font info for 53 fonts, out of 500000 for 1000
+ 16 hyphenation exceptions out of 1000
+ 30i,10n,28p,995b,375s stack positions out of 1500i,500n,5000p,200000b,5000s
+ 53 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 20 words of extra memory for PDF output out of 65536
+{/usr/share/texmf/dvips/psnfss/8r.enc}{/usr/share/texmf
+/dvips/tetex/bbad153f.enc}</usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb>{
+/usr/share/texmf/dvips/tetex/aae443f0.enc}</usr/share/texmf/fonts/type1/bluesky
+/cm/cmmi8.pfb>{/usr/share/texmf/dvips/tetex/f7b6d320.enc}</usr/share/texmf/font
+s/type1/bluesky/cm/cmr8.pfb>
+Output written on gol_sirc.pdf (8 pages, 145498 bytes).

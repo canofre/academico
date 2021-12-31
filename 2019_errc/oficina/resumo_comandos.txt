@@ -1,0 +1,63 @@
+Navegação entre modos
+ - enable/disable
+ - configure terminal
+ - interface fa/
+
+Exemplos comando show
+ - show running-config (exibe configuração em execução)
+ - show startup-config (exibe configuração salva)
+ - show interfaces status (exibe status das portas)
+ - show version (exibe versão do SW e do firmware)
+
+Alterar nome do SW
+ - hostname NOME
+
+Definição do domínio
+ - ip domain-name errc2019.com.br
+
+Bloqueio da resolução de nomes
+ - ip domain-loockup
+
+Definição do gateway
+ - ip default-gateway 192.168.10.1
+
+Definição servidor DNS
+ - ip name-server 8.8.8.8
+
+Definição servidor NTP
+ - ntp 200.132.0.132
+
+Definição horário de verão
+ - clock summer-time BRV recurring 3 Sun Oct 0:00 3 Sun Feb 0:00
+
+Configuração SNMP (monitoramento)
+ - snmp-server communit REDE_CABEADA RO
+
+Salvar configurações
+ - copy running-config startup-config
+ - wr
+
+Limitação de senha para executar o "enable"
+ - enable secret SENHA
+
+Criação de usuário (acesso Telnet ou SSH)
+ - username admin privilege 15 secret SENHA
+
+Limitação de acesso CONSOLE
+ - line console 0
+	- login local
+
+Limitação de acesso SSH/Telnet
+ - line vty 0 15
+	- login local
+
+Configuração interface virutal (ip do switch)
+ - interface vlan 1
+	- ip address 192.168.1.10 255.255.255.0
+	- no shutdown
+
+Configurações para acesso ssh
+ - ip domain-name errc2019.com.br
+ - crypto key generate rsa (use 2048)
+ - ip ssh time-out 60
+

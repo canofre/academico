@@ -1,0 +1,27 @@
+@Misc{wiki,
+  author =        {Wikip\'{e}dia},
+  title =         {Jogo da Vida},
+  year =          {2007},
+  note =          {Dispon\'{i}vel em: http://pt.wikipedia.org/wiki/Jogo\_da\_vida. Acesso em: julho de 2007}
+}
+
+@Manual{wilk,
+  author =        {Barry Wilkinson and Michael Allen},
+  title =         {Parallel Programming},
+  organization =  {Pearson Prentice Hall},
+  year =          {2005},
+}
+
+@Manual{foster,
+  author =        {Ian Foster},
+  title =         {Designing and Building Parallel Programs},
+  organization =  {Addison-Wesley Inc},
+  year =          {1995}
+}
+
+@Misc{svn,
+  author =        {Collabnet},
+  title =         {P\'{a}gina do Subversion - {SVN}},
+  year =          {2007},
+  note =          {Dispon\'{i}vel em: http://www.tigris.org/. Acesso em: junho de 2007}
+}

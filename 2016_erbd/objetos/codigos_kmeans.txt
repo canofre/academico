@@ -1,0 +1,18 @@
+
+	K-means básico
+
+	1. Selecione K pontos como centroides iniciais
+	2. repita
+	3.    forme K grupos atribuindo cada ponto ao seu centroide mais próximo
+	4.    recalcule o centroide de cada grupo
+	5. até que os centroides não mudem
+
+	K-means 01
+
+	1. Carrega a base de dados para uma matriz LxC, onde 
+		L é o número de objetos e C a quantidade de atributos
+	2. Define as dimenções a serem utilizadas.
+	3. Inicializa o espaço com os objetos da matriz.
+	4. Determina a quantidade de clusters e o método de inicialização,
+		realizando a classificação dos pontos 
+	5. Exibe o pcentroide e o número de objetos de cada cluster.

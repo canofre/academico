@@ -1,0 +1,224 @@
+\documentclass{beamer}
+
+%\usetheme{Dresden}
+%\usetheme{Luebeck} %esse aqui é do geito que eu gostei -> menu em cima
+\usetheme{Malmoe} % tb gostei -> menu em cima
+%\usetheme{Marburg} % menu do lado direito
+%\usetheme{PaloAlto} % menu do lado esquerdo
+%\usetheme{Rochester} % simples sem menu
+%\usetheme{Warsaw} % menu em cima
+%\usetheme{Singapore} PODRE
+%\usetheme{Pittsburgh} SIMPLES E TUDO BRANCO
+%\usetheme{Ilmenau} PODRE
+%\usetheme{Hannover}
+%\usecolortheme{whale} % ->legal : Preto e Azul
+%\usecolortheme{albatross} NAO
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{epsfig, shadow}
+\usepackage{tabularx,multirow}
+\usepackage{pgf,xcolor,pslatex}
+\usepackage[latin1]{inputenc}
+\setbeamercovered{transparent}
+
+
+\title[BDTG]{Desenvolvimento de uma Biblioteca Digital de Trabalhos de Graduação}
+\author[XXII CRICTE (29-31/10/07)]{Adler Schmidt, Caroline Vicentini, Fernando Bevilacqua, Ronaldo Canofre e Andrea Charão}
+\institute{
+  \vspace{-.3cm} \\
+PET - Programa de Educação Tutorial\\
+Curso de Ciência da Computação\\
+UFSM - Universidade Federal de Santa Maria
+}
+
+\date{
+\begin{center}
+\vspace{-1cm}
+\end{center}
+
+\begin{center}
+	\vspace{-.25cm}
+	\includegraphics[scale=.18]{logos/ufsmLogo.eps}
+	\hspace{+1.2cm}
+	\includegraphics[height=1cm]{logos/logo_pet.eps}
+\end{center}
+}
+
+
+%inicia o ducumento
+\begin{document}
+
+
+%Página com os logos e o titulo
+\frame[plain]{\titlepage}
+
+%Side 2 - Roteiro
+\begin{frame}
+   \frametitle{Roteiro}
+    %acrescenta todas as sessoes com itens do roteiro
+   \tableofcontents[hideallsubsections]
+\end{frame}
+
+
+\section{Introdução}
+
+\begin{frame}
+   \frametitle{Introdução}
+	\begin{itemize}
+		\item Trabalhos de Graduação (TG's) \pause 
+		\item Disseminação do conhecimento \pause
+		\item Bibliotecas univerisitárias \pause
+		\item Bibliotecas digitais \pause
+		\item Panorama
+	\end{itemize}
+\end{frame}
+
+\section{Planejamento}
+
+\begin{frame}
+   \frametitle{Objetivos do sistema}
+	\begin{itemize}
+		\item Divulgação eficiente \pause
+		\begin{itemize}
+		    \item Meio escolhido ( Web )
+		    \item Acesso e divulgação fácil e popular
+		    \item Integração \pause
+		\end{itemize}
+		\item Manutenção de Dados
+		\item Interface Administrativa: \pause
+		\begin{itemize}
+		    \item Layout sistema
+		    \item Intuitiva
+		    \item Layout simples
+	        \end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\section{Projeto}
+
+\begin{frame}
+   \frametitle{ Projeto}
+	\begin{itemize}
+		\item Análise de Requisitos \pause
+	        \begin{itemize}
+		    \item Processo de tramitação dos TG's
+		    \item Definição dos dados \pause
+		\end{itemize}
+		\item Modelagem da base de dados
+		\item PHP 5, MySQL e phpmyadmin
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle {Modelagem da Base de Dados}
+	\begin{center}
+	    %\hspace{+1.2cm} 
+	    \includegraphics[scale=.35]{figuras/diagrama.eps}
+	\end{center}
+\end{frame}
+
+
+\section{Implementação}
+
+\begin{frame}
+    \frametitle{Implementação}
+	\begin{itemize}
+    \item Organização 
+	\begin{itemize}
+	    \item Políticas de Acesso 
+	    \item Classes em comum \pause
+	\end{itemize}
+    \item Árvore de diretórios 
+    \begin{itemize}
+	\item Separadas por funcionalidade e função lógica \pause
+   \end{itemize}
+   \item Gerencia de Tarefas
+	\begin{itemize}
+	    \item SVN
+	    \item Netoffice
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle {Árvore de Diretórios}
+	\begin{center}
+	    %\hspace{+1.2cm} 
+	    \includegraphics[scale=.30]{figuras/arvoreDir.eps}
+	    %\includegraphics[height=1cm]{logos/logo_pet.eps}		    
+	\end{center}
+\end{frame}
+
+
+\section{Avaliação e Resultados}
+
+\begin{frame}
+   \frametitle{Finalização}
+   \begin{itemize}
+        \item Fase de testes
+        \item Modificações
+        \item Estado atual
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle {Tela Inicial do Sistema}
+	\begin{center}
+	    %\hspace{+1.2cm} 
+	    \includegraphics[scale=.33]{figuras/principal.eps}
+	    %\includegraphics[height=1cm]{logos/logo_pet.eps}		    
+	\end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle {Busca Avançada}
+	\begin{center}
+	    %\hspace{+1.2cm} 
+	    \includegraphics[scale=.33]{figuras/busca_avancada.eps}
+	    %\includegraphics[height=1cm]{logos/logo_pet.eps}		    
+	\end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle { Resultado Simples}
+	\begin{center}
+	    \hspace{+1.2cm} 
+	    \includegraphics[scale=.33]{figuras/resultado_simples.eps}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle {Resultado Detalhado}
+	\begin{center}
+	    \hspace{+1.2cm} 
+	    \includegraphics[scale=.33]{figuras/resultado_detalhado.eps}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle {Sistema Administrativo -  Inclusão}
+	\begin{center}
+	    \hspace{+1.2cm} 
+	    \includegraphics[scale=.33]{figuras/admin_inc.eps}		    
+	\end{center}
+\end{frame}
+
+
+\section{Considerações Finais}
+
+\begin{frame}
+    \frametitle { Conclusão }
+    \begin{itemize} 
+	\item Objetivos \pause
+	\item Trabalhos Futuros \pause
+	\item Disponibilização 
+	\item www-app.inf.ufsm.br/bdtg \pause
+	\item Perguntas
+    \end{itemize}
+\end{frame}
+
+\end{document}

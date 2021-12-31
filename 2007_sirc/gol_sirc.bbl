@@ -1,0 +1,25 @@
+\begin{thebibliography}{}
+
+\bibitem[Foster 1995]{foster}
+Foster, I. (1995).
+\newblock {\em Designing and Building Parallel Programs}.
+\newblock Addison-Wesley Inc.
+
+\bibitem[Gropp et~al. 1996]{mpi}
+Gropp, W., Lusk, E., Doss, N., and Skjellum, A. (1996).
+\newblock {High-Performance, {P}ortable {I}mplementation of the {MPI} {M}essage
+  {P}assing {I}nterface {S}tandard}.
+\newblock {\em Parallel Computing}, 22(6):789--828.
+
+\bibitem[Wikip\'{e}dia 2007]{wiki}
+Wikip\'{e}dia (2007).
+\newblock Jogo da vida.
+\newblock Dispon\'{i}vel em: http://pt.wikipedia.org/wiki/Jogo\_da\_vida.
+  Acesso em: julho de 2007.
+
+\bibitem[Wilkinson and Allen 2005]{wilk}
+Wilkinson, B. and Allen, M. (2005).
+\newblock {\em Parallel Programming}.
+\newblock Pearson Prentice Hall.
+
+\end{thebibliography}

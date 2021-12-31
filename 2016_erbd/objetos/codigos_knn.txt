@@ -1,0 +1,66 @@
+
+	Knn básico
+
+	1. Sendo um novo objeto X e conjuto de treinamento D 
+	2. Calcule a distância entre X e cada objeto do conjunto
+	3. Ordene as distâncias geradas de forma crescente
+	4. Selecione as K primeiras distâncias
+	5. Classifique X como a classes mais frequente
+
+
+
+	1. Sendo um novo objeto X e conjuto de treinamento D 
+	2. repita
+	3. 		calcule a distância entre X e um objeto
+	4. até que o conjunto termine
+	5. ordene as distâncias geradas de forma crescente
+	6. selecione as K primeiras distâncias
+	7. classifique X como a classes mais frequente
+
+
+ Knn02: Também limita o calculo a 4 atributos o que limita os conjuntos de dados a serem testados. Otem o identificador de classe ao qual o objeto possui mais vizinhos proximos. O número de vizinho proximos a serem analisados é passado como parametro de uma função. O objeto a ser analisado deve estar no conjunto de dados, pois é passado para a função o indicador de posição desse objeto.
+
+ Knn03: Tem o número de classes limitadas a 3, mas com a modificação da inicialização de um array (em uma função) é possível deixar o número de classes variáveis. Acredito que tenha sido uma falha essa inicialização, pois o desenvolvimento disponibiliza metodos para incluir novas classes.
+ Essa implementação é a mais flexivel em relação ao conjunto de dados e também quanto ao objeto a ser classificado, pois os valores podem ser passados via função e não necessitam estar no conjuto de testes. Essa implementação permite também que sejam atribuidos pesos a cada um dos atributos.
+
+
+ Knn02
+	1. Calcula a distancia de cada objeto com relação aos demais
+	2. Armazena de forma ordenada para cada Objeto
+	3. Obtem os N vizinhos mais proximos de um objeto (as primeiras distancias de uma posição do array de distancias)
+	4. Obtem o label do grupo ao qual o elemento tem maior quantidade de vizinhos proximos
+	
+
+Knn03
+	
+	1. Cria/Inicializa o nome e o PESO dos atributos
+	2. Cria as classes nas quais os objetos serão inseridos
+	3. Adiciona pontos/objetos a cada classe, sendo que cada atributo desse objeto possui um peso definido no passo 1
+	4. Classifica
+		4.1 Calcula a média das distâncias dos pontos de cada classe, armazenando em um array
+		4.2 Classifica os objetos passados em uma das tres classes, calculando a distancia entre os pontos 	passados e a média dos pontos de cada classe, utilizando o peso dado a classe sobre essa distancia,
+		4.3 Retorna o identificador da classe correspondente a menor distância
+
+
+
+
+Knn03
+	
+	1. Define os atributos
+	2. Define as classes existentes
+	3. Carrega a base de dados
+	3. Adiciona os objetos as classes equivalentes
+	4. Calcula a média das distâncias dos objetos de cada classe
+	5. Classifica o novo objeto calculando a distancia entre os 
+		seus atributos e a média das distâncias de cada classe
+	6. Retorna o identificador da classe correspondente a menor distância
+
+
+
+
+
+
+
+
+
+R. Paredes and E. Vidal, “Learning Weighted Metrics to Minimize Nearest-Neighbor Classification Error”, IEEE Transactions on Pattern Analysis and Machine Intelligence, vol.28, no.7, pp. 1100-1110, july 2006
