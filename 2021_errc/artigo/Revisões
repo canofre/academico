@@ -1,0 +1,77 @@
+########## 01 Parecer:
+Considero que o artigo está bem escrito, mas há uma ou outra correção ainda necessária. Logo, sugiro mais uma revisão para a versão final.
+Por exemplo, na primeira frase da introdução - "A programabilidade de rede (PPD), surgiu como parte ..." - não há virgula entre sujeito e verbo.
+     #> Alterado o texto, sendo alterado também o resumo
+
+########## 02 Parecer:
+Trabalho com bastante informações ricas sobre o uso do PPD, mas ao final fiquei me perguntando se esse é um problema do hardware testado ou da tecnologia,  sugiro incluir isso como pergunta a ser respondida como trabalho futuro.  Uma outra sugestão seria aproveitar melhor o espaço da conclusão com mais contribuições sobre o que foi analisado.  Podemos dizer que após a degradação de 50% existe uma estabilidade?
+     #> Alterada a conclusão para adicionar os dois pontos como questionamento
+
+
+Correção do texto:
+Faltam fechar parênteses, palavra figura e semáforo usado em caixa alta e baixa. 
+Tópico 2: Não explica o que são "MEs vizinhas"
+Tópico 4:  terceiro parágrafo ficou sem uma finalização.
+Bibliografia: "Netronome, S. I. (2020). Netronome nfp-4000 flow processor"  e outros ->  é um manual, site, livro? tem URL?
+
+    Faltam fechar parênteses, palavra figura e semáforo usado em caixa alta e baixa. 
+    #> Corrigido MEs para FPCs
+    Tópico 4:  terceiro parágrafo ficou sem uma finalização.
+    #> Ajustadas bibliografias para incluir a URL, no entanto tive 
+    que utilizar o bit.ly pois o template da SBC não adiciona URL
+
+########## 03 Parecer:
+O trabalho investiga o impacto da programabilidade (utilizando P4) na SmartNIC NFP4000. Especificamente, o foco é direcionado para a taxa final de encaminhamento de pacotes. O contexto é relacionado com a ERRC e o tema é interessante, sobretudo considerando que diversos artigos atuais ignoram tal métrica e análise. Parabéns pela escolha do tema.
+
+Encaminho algumas sugestões para revisão e discussão.
+
+
+// Resumo: 
+- Detalhar utilização mais eficiente. Revisar mas de 50% e frase confusa sobre o objetivo.
+
+
+
+// Introdução:
+- Qual parte da rigidez da rede pode ser melhorada com PPD?
+- Revisar: mais recentemente . A referência utilizada é de 2014, enquanto o parágrafo anterior utilizou referências de 2015 e 2018.
+- No entanto, quando aplicada sobre dispositivos programáveis como interfaces SmartNIC ou NetFPGA, a ampliação de recursos não se apresenta como uma possibilidade. Seria impossibilidade?
+
+
+
+// Trabalhos relacionados
+- A discussão final (último parágrafo da Seção 3) poderia elencar quais trabalhos foram desenvolvidos em ambientes virtualizados. A informação é pertinente para justificar a argumentação da hipótese.
+
+
+
+// Análise e resultados:
+- Quantas execuções foram realizadas? Média e desvio?
+- Como sugestão para trabalhos futuros, seria possível aprofundar a identificação da origem (interna) dos limitadores de desempenho?
+
+
+
+// Comentários gerais e typos:
+- System-on-chip
+- 256 <para/de> propósito geral
+- Recomendo uma revisão buscando typos e ajustando o texto para a versão final. Revisar a utilização de vírgulas.
+- Muito próximos.
+
+
+
+
+Parecer:Caso você concorde que o artigo deva ser aprovado, apresente ao autores informações que você julga relevantes para gerar a versão final do artigo a ser incluída nos anais da ERRC. Se você entretanto achar que o artigo não deve ser selecionado, apresente no texto abaixo os motivos para isso de forma que os autores tenham a oportunidade de melhorar o trabalho para futuras submissões.:  
+
+O trabalho apresenta uma análise do impacto no desempenho (forwarding rate) de uma SmartNIC decorrente da adição de um conjunto de operações durante o processamento de pacotes. O artigo apresenta resultados que ilustram a redução de desempenho com a inclusão das operações.
+
+
+
+Alguns pontos a serem melhorados no artigo incluem:
+- falta uma melhor organização e justificativa para os diversos casos avaliados; não fica claro quais casos possuem operações cumulativas (operações de um caso estão incluídas no caso posterior) ou são operações independentes; a escolha das operações deve ser melhor fundamentada
+- como os resultados são baseados em uma média, é importante apresentar o desvio padrão; também é aconselhado realizar mais repetições dos experimentos
+
+
+
+Erros de escrita encontrados no artigo:
+- througpht -> throughput
+- realação -> relação
+- Mutes -> mutex
+- 4Kb -> 4KB (b = bit e B = byte)
