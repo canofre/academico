@@ -1,0 +1,7 @@
+"Basic \nForwarding"			132
+"Full INT" 						309
+"Fixed\nThreshold"				333
+"ETA\n(w=2^{20})"				202
+"ETA\n(w=2^{21})"				190
+"ETA\n(w=2^{22})"				200
+"ETA\n(w=2^{23})"				192
